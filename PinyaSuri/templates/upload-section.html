@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Upload Section</title>
-  <link rel="stylesheet" href="upload-section.css" />
+  <link rel="stylesheet" href="../static/css/upload-section.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Black+Han+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -28,11 +28,11 @@
       <!-- UPLOAD BUTTONS -->
       <div class="upload-buttons">
         <label class="upload-btn" for="fileInput">
-          <img src="images/Google Images.png" alt="Camera Icon">
+          <img src="../static/images/Google Images.png" alt="Camera Icon">
           <p>Take a photo</p>
         </label>
         <label class="upload-btn" for="fileInput">
-          <img src="images/Upload.png" alt="Upload Icon">
+          <img src="../static/images/Upload.png" alt="Upload Icon">
           <p>Upload a photo</p>
         </label>
         <input type="file" id="fileInput" accept="image/*" hidden>
@@ -40,9 +40,10 @@
 
       <!-- PREVIEW CARD -->
       <div class="preview-card">
+        
         <!-- Placeholder (shown before upload) -->
         <div class="preview-placeholder" id="placeholder">
-          <img src="images/Google Images.png" class="placeholder-icon" alt="No photo">
+          <img src="../static/images/Google Images.png" class="placeholder-icon" alt="No photo">
           <p>No image uploaded yet</p>
           <p>Please take or upload a photo to preview here.</p>
         </div>
