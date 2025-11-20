@@ -1,0 +1,288 @@
+body {
+  animation: fadeIn 1s ease-in;
+  margin: 0;
+  padding: 0;
+  font-family: 'Black Han Sans', sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Fade In Effect */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* FULLSCREEN PAGE */
+.second-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  background: url('images/Group 4_PPT (1).png') center/cover no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* prevents scroll glitch on some screens */
+}
+
+/* Ellipse 3 */ 
+.ellipse3 { 
+  position: absolute; 
+  width: 80px; height: 80px; 
+  left: 45px; 
+  top: 20px; 
+  background: url('images/Ellipse\ 3.png') no-repeat center center / contain; 
+  border-radius:100%; 
+ }
+
+  /* HELLO PO! */ 
+.hello-text { 
+  position: absolute; 
+  width: 247.41px; 
+  height: 35.74px; 
+  left: 135px; 
+  top: 20px; 
+  font-family: 'Poppins', sans-serif; 
+  font-style: normal; 
+  font-weight: 700; 
+  font-size: 20px; 
+  line-height: 45px; 
+  display: flex; 
+  align-items: center; 
+  color: #FFD51E; 
+  z-index: 2; }
+
+/* Welcome Back! */ 
+.welcome-back { 
+  position: absolute; 
+  width: 264.04px; 
+  height: 35.74px; 
+  left: 135px; 
+  top: 40px; 
+  font-family: 'Poppins', sans-serif; 
+  font-style: normal; 
+  font-weight: 500; 
+  font-size: 20px; 
+  line-height: 45px; 
+  display: flex; 
+  align-items: center; 
+  color: #FFFFFF; 
+  z-index: 2; }
+
+/* Doorbell */ 
+.doorbell { 
+  position: absolute; 
+  width: 75px; 
+  height: 75px; 
+  left: 1790px; 
+  top: 25px; 
+  background: url('images/doorbell.png') no-repeat center; 
+  background-size: contain; 
+  cursor: pointer; 
+  z-index: 3; }
+
+/* Rectangle 6 */ 
+.rectangle6 { 
+  position: absolute; 
+    width: 1900px; 
+    height: 290px; 
+    left: calc(50% -1800 / 2); 
+    top: 12%; 
+    background: url('images/IMG_3549.gif') no-repeat center; 
+    background-size: cover; 
+    filter: drop-shadow(5px 30px 25px rgba(0, 0, 0, 0.75)); 
+    border-radius: 45px; 
+    z-index: 2; }
+
+    
+    /* Ellipse 4 */
+.ellipse4 {
+  position: absolute;
+  width: 270px;
+  height: 315px;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  background: url('images/Ellipse 4.png') no-repeat center;
+  background-size: contain;
+  z-index: 3;
+}
+
+
+/*PINYASURI*/
+.brand {
+  position: absolute;
+  left: 50%;
+  top: 60px;
+  transform: translate(-50%, 10px); /* center horizontally, adjust vertically */
+  font-family: 'Fredoka One', regular;
+  font-size: 80px;
+  line-height: 70px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 4px 2px 3px #000000;
+  top: 45%;
+  z-index: 4;
+}
+
+/* Individual colors */
+.brand .pinya {
+  color: #FFD51E;
+}
+
+.brand .suri {
+  color: #FFFFFF;
+  margin-left: 5px; /* slight spacing if needed */
+}
+
+/*Title of Capstone*/
+.subtitle-text {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat', sans-serif,bold;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: #FFFFFF;
+  z-index: 5;
+
+  max-width: 90%; /* prevent overflow on smaller screens */
+}
+
+/* Example base for your rectangles */
+.rounded-rectangle,
+.rounded-rectangle1,
+.rounded-rectangle2 {
+  position: absolute;
+  width: 850px;
+  height: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #D9D9D9;
+  border-radius: 66px;
+}
+
+/* Position each rectangle vertically */
+.rounded-rectangle { top: 595px; }
+.rounded-rectangle1 { top: 695px; }
+.rounded-rectangle2 { top: 795px; }
+
+/* Text styling for overlap */
+.data-logs,
+.upload-section,
+.management-strategies {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Black Han Sans', sans-serif, BOLD;
+  font-size: 48px;
+  color: #025A2C;
+  text-shadow: 2px 6px 5px rgba(0, 0, 0, 0.31);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* Match text position to each rectangle */
+.data-logs { top: 640px; } /* slightly above rectangle center */
+.upload-section { top: 740px; }
+.management-strategies { top: 840px; }
+
+/* ABOUT */
+.about {
+  position: absolute;
+  width: 247.41px;
+  height: 35.74px;
+  left: 70px;
+  top: 850px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+  color: #FFD51E;
+  z-index: 2;
+}
+
+/* CONTACT */
+.contact {
+  position: absolute;
+  width: 247.41px;
+  height: 35.74px;
+  left: 1750px;
+  top: 850px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+  color: #FFD51E;
+  z-index: 2;
+}
+
+/* DOT */
+.dot {
+  position: absolute;
+  width: 1000px;
+  height: 35.74px;
+  left: 50%;
+  top: 480px;
+  letter-spacing: -0.5em;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 70px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+  color: #FFD51E;
+  z-index: 2;
+}
+
+/* ✅ ADDED ONLY THIS PART BELOW — nothing else changed */
+
+/* Make rectangles clickable */
+a.rounded-rectangle,
+a.rounded-rectangle1,
+a.rounded-rectangle2 {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Hover effect for rectangles */
+a.rounded-rectangle:hover,
+a.rounded-rectangle1:hover,
+a.rounded-rectangle2:hover {
+  transform: translateX(-50%) scale(1.03);
+  background-color: #cfcfcf;
+}
+
+/* Make text links behave the same */
+a.data-logs,
+a.upload-section,
+a.management-strategies {
+  text-decoration: none;
+  color: #025A2C;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover animation for text */
+a.data-logs:hover,
+a.upload-section:hover,
+a.management-strategies:hover {
+  color: #FFD51E;
+  transform: translate(-50%, -50%) scale(1.05);
+}

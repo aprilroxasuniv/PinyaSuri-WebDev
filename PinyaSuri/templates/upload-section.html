@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Section</title>
+  <link rel="stylesheet" href="upload-section.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Black+Han+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="upload-page">
+    
+    <!-- NAVIGATION BAR -->
+    <div class="navbar">
+      <div class="menu-icon"></div>
+      <div class="navbar-center">
+        <h1 class="navbar-title">UPLOAD SECTION</h1>
+      </div>
+      <div class="doorbell"></div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div class="upload-content">
+      <p class="instruction-text">
+        Take a photo or upload your pineapple image to check for signs of afflictions.
+      </p>
+
+      <!-- UPLOAD BUTTONS -->
+      <div class="upload-buttons">
+        <label class="upload-btn" for="fileInput">
+          <img src="images/Google Images.png" alt="Camera Icon">
+          <p>Take a photo</p>
+        </label>
+        <label class="upload-btn" for="fileInput">
+          <img src="images/Upload.png" alt="Upload Icon">
+          <p>Upload a photo</p>
+        </label>
+        <input type="file" id="fileInput" accept="image/*" hidden>
+      </div>
+
+      <!-- PREVIEW CARD -->
+      <div class="preview-card">
+        <!-- Placeholder (shown before upload) -->
+        <div class="preview-placeholder" id="placeholder">
+          <img src="images/Google Images.png" class="placeholder-icon" alt="No photo">
+          <p>No image uploaded yet</p>
+          <p>Please take or upload a photo to preview here.</p>
+        </div>
+
+        <!-- Uploaded image (will appear centered) -->
+        <img id="uploadedImage" class="uploaded-image" alt="Uploaded Image" style="display:none;" />
+
+        <!-- Result info (hidden before upload) -->
+        <div class="result-info" id="resultInfo" style="display:none;">
+          <h3 id="diseaseName"></h3>
+          <p id="recommendation"></p>
+          <p id="timestamp"></p>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="action-buttons">
+        <button class="save-btn">Save to Data Logs</button>
+        <button class="manage-btn">More Management Strategies</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const uploadedImage = document.getElementById('uploadedImage');
+    const placeholder = document.getElementById('placeholder');
+    const resultInfo = document.getElementById('resultInfo');
+    const diseaseName = document.getElementById('diseaseName');
+    const recommendation = document.getElementById('recommendation');
+    const timestamp = document.getElementById('timestamp');
+
+    const afflictions = [
+      { name: "Fruit Fasciation (98%)", rec: "Less fertilizer is recommended.", healthy: false },
+      { name: "Heart Rot (86%)", rec: "Remove infected plants immediately.", healthy: false },
+      { name: "Leaf Spot (92%)", rec: "Apply fungicide and avoid overwatering.", healthy: false },
+      { name: "Black Rot (90%)", rec: "Use copper-based treatment.", healthy: false },
+      { name: "Healthy Pineapple (99%)", rec: "No signs of disease detected. Great job!", healthy: true }
+    ];
+
+    fileInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          uploadedImage.src = e.target.result;
+          uploadedImage.style.display = 'block';
+          placeholder.style.display = 'none';
+          resultInfo.style.display = 'block';
+
+          const selected = afflictions[Math.floor(Math.random() * afflictions.length)];
+          diseaseName.textContent = selected.name;
+          recommendation.textContent = selected.rec;
+
+          // Green glow for Healthy Pineapple
+          if (selected.healthy) {
+            resultInfo.classList.add('healthy-glow');
+          } else {
+            resultInfo.classList.remove('healthy-glow');
+          }
+
+          const now = new Date();
+          const options = { hour: 'numeric', minute: 'numeric', hour12: true, weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+          timestamp.textContent = now.toLocaleString('en-US', options);
+        }
+        reader.readAsDataURL(file);
+      } else {
+        uploadedImage.style.display = 'none';
+        placeholder.style.display = 'flex';
+        resultInfo.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Management Strategies</title>
+  <link rel="stylesheet" href="management-strategies.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Black+Han+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="management-page">
+
+    <!-- NAVIGATION BAR -->
+    <div class="navbar">
+      <div class="menu-icon"></div>
+      <div class="navbar-center">
+        <h1 class="navbar-title">MANAGEMENT STRATEGIES</h1>
+      </div>
+      <div class="doorbell"></div>
+    </div>
+
+    <!-- HEADER CARD -->
+    <div class="header-card" id="headerCard">
+      <p class="header-text">How to Keep Your</p>
+      <h2 class="header-title">Pineapples Healthy</h2>
+      <p class="subtext">Local and International Remedies</p>
+    </div>
+
+    <!-- COLLAPSIBLE REMEDIES (still in HTML, but hidden in page) -->
+<div class="remedies-container" id="remediesContainer" style="display: none;">
+  <div class="remedy-section">
+    <h3>🌿 Local Remedies</h3>
+    <ul>
+      <li>Use organic compost to maintain soil health.</li>
+      <li>Remove infected leaves and dispose properly.</li>
+      <li>Apply neem oil as a natural pesticide.</li>
+    </ul>
+  </div>
+
+  <div class="remedy-section">
+    <h3>🌎 International Remedies</h3>
+    <ul>
+      <li>Apply copper-based fungicides to prevent rot.</li>
+      <li>Use disease-resistant pineapple varieties.</li>
+      <li>Ensure proper drainage and balanced irrigation.</li>
+    </ul>
+  </div>
+</div>
+
+    <!-- DISEASES SECTION -->
+    <div class="section">
+      <h3 class="section-title">DISEASES</h3>
+      <div class="grid">
+        <div class="grid-item" data-disease="Crown Rot" data-description="Crown Rot is caused by waterlogged soil and poor drainage." data-image="images/crownrot.png"     
+         data-tips="Improve soil aeration, avoid overwatering, and remove infected leaves.">
+          <img src="images/crownrot.png" alt="Crown Rot">
+          <p>Crown Rot</p>
+        </div>
+
+        <div class="grid-item" data-disease="Fruit Rot" data-description="Fruit Rot is a fungal infection that causes soft spots on fruit." data-image="images/fruitrot.png"
+        data-tips="Remove affected fruits, apply fungicide, and maintain proper hygiene.">
+          <img src="images/fruitrot.png" alt="Fruit Rot">
+          <p>Fruit Rot</p>
+        </div>
+
+        <div class="grid-item" data-disease="Mealybug Wilt" data-description="Mealybug Wilt causes leaf curling and reddening." data-image="images/mealybug.png"
+        data-tips="Control ants, spray insecticidal soap, and prune heavily infested leaves.">
+          <img src="images/mealybug.png" alt="Mealybug Wilt">
+          <p>Mealybug Wilt</p>
+        </div>
+
+        <div class="grid-item" data-disease="Root Rot" data-description="Root Rot leads to plant wilting and yellow leaves." data-image="images/rootrot.png"
+        data-tips="Ensure proper drainage, avoid excess watering, and remove rotted roots.">
+          <img src="images/rootrot.png" alt="Root Rot">
+          <p>Root Rot</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFFLICTIONS SECTION -->
+    <div class="section">
+      <h3 class="section-title">DISORDERS</h3>
+      <div class="grid">
+        <div class="grid-item" data-disease="Multiple Crown" data-description="Multiple Crown occurs due to hormonal imbalance or high nitrogen fertilizer." data-image="images/multiplecrown.png"
+        data-tips="Use balanced fertilizer, avoid excessive nitrogen, and monitor plant growth.">
+          <img src="images/multiplecrown.png" alt="Multiple Crown">
+          <p>Multiple Crown</p>
+        </div>
+
+        <div class="grid-item" data-disease="Fruit Fasciation" data-description="Fruit Fasciation causes irregular growth and twisted fruit. " data-image="images/fruitfasciation.png"
+        data-tips="Maintain proper spacing, provide balanced nutrients, and prune affected fruit. ">
+          <img src="images/fruitfasciation.png" alt="Fruit Fasciation">
+          <p>Fruit Fasciation</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <img id="modalImage" src="" alt="Disease Image" class="modal-image">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+
+    // Disease and Affliction Cards (Modal)
+    const gridItems = document.querySelectorAll('.grid-item');
+    const modal = document.getElementById('infoModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const closeBtn = document.querySelector('.close-btn');
+
+    gridItems.forEach(item => {
+      item.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalTitle.textContent = item.getAttribute('data-disease');
+        modalDescription.textContent = item.getAttribute('data-description');
+        modalImage.src = item.getAttribute('data-image');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+// Header Card Click (modal for remedies)
+headerCard.addEventListener('click', () => {
+  modal.style.display = 'flex';
+  modalTitle.textContent = headerCard.getAttribute('data-title');
+  modalDescription.innerHTML = remediesContainer.innerHTML; // load HTML content
+});
+
+ let selectedDisease = null; // stores selected disease info
+
+gridItems.forEach(item => {
+  item.addEventListener('click', () => {
+    selectedDisease = {
+      title: item.getAttribute('data-disease'),
+      description: item.getAttribute('data-description'),
+      image: item.getAttribute('data-image'),
+      tips: item.getAttribute('data-tips')
+    };
+  });
+});
+
+headerCard.addEventListener('click', () => {
+  modal.style.display = 'flex';
+
+  if (selectedDisease) {
+    // Show management tips for selected disease/affliction
+    modalTitle.textContent = `Management Tips for ${selectedDisease.title}`;
+    modalImage.src = selectedDisease.image;
+    modalDescription.innerHTML = `
+      <p>${selectedDisease.description}</p>
+      <h4>Tips to Manage:</h4>
+      <p>${selectedDisease.tips}</p>
+    `;
+  } else {
+    // No disease selected → show general tips
+    modalTitle.textContent = headerCard.getAttribute('data-title');
+    modalImage.src = headerCard.getAttribute('data-image');
+    modalDescription.innerHTML = remediesContainer.innerHTML;
+  }
+});
+
+  </script>
+</body>
+</html>

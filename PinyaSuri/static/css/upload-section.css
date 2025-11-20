@@ -1,0 +1,205 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('images/Group 4_PPT (1).png') center/cover no-repeat;
+  animation: fadeIn 1s ease-in;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* MAIN PAGE */
+.upload-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1900px;
+  height: 110px;
+  background: url('images/Group 4_PPT (1).png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 5px 20px 5px rgba(0,0,0,0.50);
+  border-radius: 70px;
+  z-index: 10;
+}
+
+.menu-icon {
+  width: 55px;
+  height: 70px;
+  background: url('images/Menu.png') no-repeat center/contain;
+  cursor: pointer;
+}
+
+.navbar-center {
+  text-align: center;
+  flex: 1;
+}
+
+.navbar-title {
+  color: #FFD51E;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 50px;
+  text-shadow: 2px 3px 4px rgba(0,0,0,0.6);
+}
+
+.doorbell {
+  width: 75px;
+  height: 75px;
+  background: url('images/doorbell.png') no-repeat center/contain;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.upload-content {
+  margin-top: 120px;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.instruction-text {
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+/* UPLOAD BUTTONS */
+.upload-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.upload-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px dashed black;
+  border-radius: 20px;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  color: #FFD51E;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+  font-size: 18px;
+}
+
+.upload-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 213, 30, 0.2);
+}
+
+.upload-btn img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 0px;
+}
+
+/* PREVIEW CARD */
+.preview-card {
+  background: #012e16;
+  border-radius: 25px;
+  box-shadow: 10px 15px 15px rgba(0,0,0,0.70);
+  padding: 20px;
+  width: 85%;
+  max-width: 1000px;
+  height: 300px; /* slightly taller to fit image + info */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;  /* stack image & result vertically */
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  top: 25%;
+  margin: 0 auto 20px auto; /* ✅ centers horizontally and adds space below */
+  
+}
+
+/* Placeholder text and icon (centered properly) */
+.preview-placeholder {
+  display: flex;            /* ✅ flexbox for proper centering */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgba(255,255,255,0.7);
+  height: 100%;             /* ✅ ensures full card centering */
+
+}
+
+.placeholder-icon {
+  width: 90px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+/* Uploaded Image (top 70%) */
+.uploaded-image {
+  width:60%;
+  height: 60%;
+  border-radius: 50px;
+  object-fit: contain;
+  display: block;
+  
+
+}
+
+/* Result Info (bottom 30%) */
+.result-info {
+  color: #FFFF;
+  border-radius: 15px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  line-height: 1;
+}
+
+/* ACTION BUTTONS */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+  flex-direction: column;
+  align-items: center; /* ✅ centers horizontally */
+
+}
+
+.save-btn, .manage-btn {
+  background: #FFD51E;
+  color: #000 ;
+  font-weight: bolder;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  width: 50%;
+  align-items: center;
+}
+
+.save-btn:hover, .manage-btn:hover {
+  background: #fff27d;
+  transform: scale(1.05);
+}

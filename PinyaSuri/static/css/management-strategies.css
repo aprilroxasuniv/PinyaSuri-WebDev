@@ -1,0 +1,237 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('images/Group 4_PPT (1).png') center/cover no-repeat;
+  color: white;
+  text-align: center;
+}
+
+.management-page {
+  padding-top: 130px;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1900px;
+  height: 110px;
+  background: url('images/Group 4_PPT (1).png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  border-radius: 70px;
+  box-shadow: 5px 20px 5px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.menu-icon {
+  width: 55px;
+  height: 70px;
+  background: url('images/Menu.png') no-repeat center/contain;
+}
+
+.navbar-title {
+  color: #FFD51E;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 50px;
+  letter-spacing: 2px;
+  text-shadow: 2px 3px 4px rgba(0,0,0,0.6);
+  line-height: 1.2;
+}
+
+.doorbell {
+  width: 70px;
+  height: 70px;
+  background: url('images/doorbell.png') no-repeat center/contain;
+}
+
+/* HEADER CARD */
+.header-card {
+  position: relative;
+  background: rgba(239, 252, 232, 0.6); /* effce8 with transparency */
+  border-radius: 20px;
+  padding: 25px;
+  width: 85%;
+  max-width: 1000px;
+  margin: 50px auto 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* Add background image with 20% transparency overlay */
+.header-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('images/Group\ 1\ \(1\).png') center/cover no-repeat; /* Replace with your image */
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.header-card * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Text Styling */
+.header-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000;
+}
+
+.header-title {
+  color: #FFD51E;
+  margin: 0px 0;
+  font-size: 35px;
+  font-family: 'Black Han Sans', sans-serif;
+  -webkit-text-stroke: 0.2px black; /* ✅ Black outline */
+  text-shadow:
+    -0.2px -0.2px 0 black,
+     0.2px -0.2px 0 black,
+    -0.2px  0.2px 0 black,
+     0.2px  0.2px 0 black; /* Fallback for Firefox */
+
+}
+
+.remedies-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  animation: fadeIn 0.5s ease-in;
+}
+
+.remedy-section h3 {
+  color: #FFD51E;
+  font-size: 22px;
+  text-align: left;
+}
+
+.remedy-section ul {
+  text-align: left;
+  line-height: 1.6;
+  margin-left: 20px;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+  margin: -0.1px;
+}
+
+/* SECTION STYLES */
+.section {
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  background: rgba(1, 46, 22, 0.7);
+  border: 2px dashed #FFFF;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.section-title {
+  color: #FFFF;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 22px;
+  margin-bottom: 20px;
+  letter-spacing:   2px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.grid-item {
+  width: 45%;
+  border-radius: 25px;
+  padding: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 213, 30, 0.7);
+}
+
+.grid-item img {
+  width: 90%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.grid-item p {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 30, 10, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modal-content {
+  background: rgba(1, 46, 22, 0.9);
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 400px;
+  width: 85%;
+  text-align: center;
+  color: white;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255, 213, 30, 0.4);
+}
+
+.modal-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #FFD51E;
+}
+
+.modal-content h3 {
+  color: #FFD51E;
+  margin-bottom: 8px;
+}
+
+.modal-content p {
+  font-size: 15px;
+  line-height: 1.5;
+}
