@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background: url('images/Group 4_PPT (1).png') center/cover no-repeat;
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
   animation: fadeIn 1s ease-in;
 }
 
@@ -19,7 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden; /* prevent body scrollbars */
+  overflow: hidden; 
 }
 
 /* NAVBAR */
@@ -31,7 +31,7 @@ body {
   width: 95%;
   max-width: 1900px;
   height: 110px;
-  background: url('images/Group 4_PPT (1).png') center/cover no-repeat;
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,7 +45,7 @@ body {
 .menu-icon {
   width: 55px;
   height: 70px;
-  background: url('images/Menu.png') no-repeat center/contain;
+  background: url('../images/Menu.png') no-repeat center/contain;
   cursor: pointer;
 }
 
@@ -80,7 +80,7 @@ body {
 .doorbell {
   width: 60px;
   height: 60px;
-  background: url('images/doorbell.png') no-repeat center/contain;
+  background: url('../images/doorbell.png') no-repeat center/contain;
   cursor: pointer;
   margin-right: 20px;
 }
@@ -90,12 +90,12 @@ body {
   margin-top: 140px;
   width: 90%;
   max-width: 1000px;
-  flex: 1; /* take available height */
+  flex: 1; /
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 10px 0 40px;
-  overflow-y: auto; /* enable scroll */
+  overflow-y: auto; 
   max-height: calc(100vh - 160px);
   scrollbar-width: thin;
   scrollbar-color: #a6a6a6 rgba(255,255,255,0.2);
@@ -138,7 +138,7 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  min-height: 180px; /* maintain size */
+  min-height: 180px; 
 }
 
 .log-card:hover {
@@ -193,7 +193,7 @@ body {
 
 /* NEW LOG HIGHLIGHT */
 .log-card.new-log {
-  background: #FFD51E; /* bright yellow for new logs */
+  background: #FFD51E; 
   color: #025A2C;
   transition: background-color 0.5s ease, box-shadow 0.3s ease;
 }
@@ -203,5 +203,3 @@ body {
   transform: scale(1.03);
   box-shadow: 0 4px 10px rgba(255, 213, 30, 0.8);
 }
-
-
