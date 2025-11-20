@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Management Strategies</title>
-  <link rel="stylesheet" href="management-strategies.css" />
+  <link rel="stylesheet" href="../static/css/management-strategies.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Black+Han+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -51,27 +51,27 @@
     <div class="section">
       <h3 class="section-title">DISEASES</h3>
       <div class="grid">
-        <div class="grid-item" data-disease="Crown Rot" data-description="Crown Rot is caused by waterlogged soil and poor drainage." data-image="images/crownrot.png"     
+        <div class="grid-item" data-disease="Crown Rot" data-description="Crown Rot is caused by waterlogged soil and poor drainage." data-image="../static/images/crownrot.png"     
          data-tips="Improve soil aeration, avoid overwatering, and remove infected leaves.">
-          <img src="images/crownrot.png" alt="Crown Rot">
+          <img src="../static/images/crownrot.png" alt="Crown Rot">
           <p>Crown Rot</p>
         </div>
 
-        <div class="grid-item" data-disease="Fruit Rot" data-description="Fruit Rot is a fungal infection that causes soft spots on fruit." data-image="images/fruitrot.png"
+        <div class="grid-item" data-disease="Fruit Rot" data-description="Fruit Rot is a fungal infection that causes soft spots on fruit." data-image="../static/images/fruitrot.png"
         data-tips="Remove affected fruits, apply fungicide, and maintain proper hygiene.">
-          <img src="images/fruitrot.png" alt="Fruit Rot">
+          <img src="../static/images/fruitrot.png" alt="Fruit Rot">
           <p>Fruit Rot</p>
         </div>
 
-        <div class="grid-item" data-disease="Mealybug Wilt" data-description="Mealybug Wilt causes leaf curling and reddening." data-image="images/mealybug.png"
+        <div class="grid-item" data-disease="Mealybug Wilt" data-description="Mealybug Wilt causes leaf curling and reddening." data-image="../static/images/mealybug.png"
         data-tips="Control ants, spray insecticidal soap, and prune heavily infested leaves.">
-          <img src="images/mealybug.png" alt="Mealybug Wilt">
+          <img src="../static/images/mealybug.png" alt="Mealybug Wilt">
           <p>Mealybug Wilt</p>
         </div>
 
-        <div class="grid-item" data-disease="Root Rot" data-description="Root Rot leads to plant wilting and yellow leaves." data-image="images/rootrot.png"
+        <div class="grid-item" data-disease="Root Rot" data-description="Root Rot leads to plant wilting and yellow leaves." data-image="../static/images/rootrot.png"
         data-tips="Ensure proper drainage, avoid excess watering, and remove rotted roots.">
-          <img src="images/rootrot.png" alt="Root Rot">
+          <img src="../static/images/rootrot.png" alt="Root Rot">
           <p>Root Rot</p>
         </div>
       </div>
@@ -81,15 +81,15 @@
     <div class="section">
       <h3 class="section-title">DISORDERS</h3>
       <div class="grid">
-        <div class="grid-item" data-disease="Multiple Crown" data-description="Multiple Crown occurs due to hormonal imbalance or high nitrogen fertilizer." data-image="images/multiplecrown.png"
+        <div class="grid-item" data-disease="Multiple Crown" data-description="Multiple Crown occurs due to hormonal imbalance or high nitrogen fertilizer." data-image="../static/images/multiplecrown.png"
         data-tips="Use balanced fertilizer, avoid excessive nitrogen, and monitor plant growth.">
-          <img src="images/multiplecrown.png" alt="Multiple Crown">
+          <img src="../static/images/multiplecrown.png" alt="Multiple Crown">
           <p>Multiple Crown</p>
         </div>
 
-        <div class="grid-item" data-disease="Fruit Fasciation" data-description="Fruit Fasciation causes irregular growth and twisted fruit. " data-image="images/fruitfasciation.png"
+        <div class="grid-item" data-disease="Fruit Fasciation" data-description="Fruit Fasciation causes irregular growth and twisted fruit. " data-image="../static/images/fruitfasciation.png"
         data-tips="Maintain proper spacing, provide balanced nutrients, and prune affected fruit. ">
-          <img src="images/fruitfasciation.png" alt="Fruit Fasciation">
+          <img src="../static/images/fruitfasciation.png" alt="Fruit Fasciation">
           <p>Fruit Fasciation</p>
         </div>
       </div>
@@ -139,10 +139,10 @@
 headerCard.addEventListener('click', () => {
   modal.style.display = 'flex';
   modalTitle.textContent = headerCard.getAttribute('data-title');
-  modalDescription.innerHTML = remediesContainer.innerHTML; // load HTML content
+  modalDescription.innerHTML = remediesContainer.innerHTML; 
 });
 
- let selectedDisease = null; // stores selected disease info
+ let selectedDisease = null; 
 
 gridItems.forEach(item => {
   item.addEventListener('click', () => {
