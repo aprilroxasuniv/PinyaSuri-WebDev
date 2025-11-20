@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background: url('images/Group 4_PPT (1).png') center/cover no-repeat;
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
   color: white;
   text-align: center;
 }
@@ -20,7 +20,7 @@ body {
   width: 95%;
   max-width: 1900px;
   height: 110px;
-  background: url('images/Group 4_PPT (1).png') center/cover no-repeat;
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,7 +33,7 @@ body {
 .menu-icon {
   width: 55px;
   height: 70px;
-  background: url('images/Menu.png') no-repeat center/contain;
+  background: url('../images/Menu.png') no-repeat center/contain;
 }
 
 .navbar-title {
@@ -48,14 +48,13 @@ body {
 .doorbell {
   width: 70px;
   height: 70px;
-  background: url('images/doorbell.png') no-repeat center/contain;
+  background: url('../images/doorbell.png') no-repeat center/contain;
 }
 
 /* HEADER CARD */
 .header-card {
   position: relative;
-  background: rgba(239, 252, 232, 0.6); /* effce8 with transparency */
-  border-radius: 20px;
+  background: rgba(239, 252, 232, 0.6); 
   padding: 25px;
   width: 85%;
   max-width: 1000px;
@@ -69,7 +68,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('images/Group\ 1\ \(1\).png') center/cover no-repeat; /* Replace with your image */
+  background: url("../images/Group\ 1\ \(1\).png") center/cover no-repeat;
   opacity: 0.3;
   z-index: 0;
 }
@@ -92,12 +91,12 @@ body {
   margin: 0px 0;
   font-size: 35px;
   font-family: 'Black Han Sans', sans-serif;
-  -webkit-text-stroke: 0.2px black; /* ✅ Black outline */
+  -webkit-text-stroke: 0.2px black; 
   text-shadow:
     -0.2px -0.2px 0 black,
      0.2px -0.2px 0 black,
     -0.2px  0.2px 0 black,
-     0.2px  0.2px 0 black; /* Fallback for Firefox */
+     0.2px  0.2px 0 black; 
 
 }
 
