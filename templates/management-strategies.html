@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Management Strategies</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/management-strategies.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Black+Han+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<!-- ================== NOTIFICATION PANEL ================== -->
+<div id="notificationPanel" class="notification-panel">
+  <h3>New Notifications</h3>
+  <div class="notif-item">📝 New data log uploaded.</div>
+  <div class="notif-item">⚠ Affliction detected in Field A.</div>
+  <p class="nothing" id="noNotif" style="display:none;">No new notifications</p>
+</div>
+
+<!-- ================== NAVBAR ================== -->
+<div class="navbar">
+
+  <div class="menu-icon" onclick="toggleMenu()"></div>
+
+  <div class="navbar-center">
+    <h1 class="navbar-title">MANAGEMENT 
+    <br>STRATEGIES</br></h1>
+  </div>
+
+  <!-- ✅ SAME BELL -->
+  <div class="doorbell" onclick="toggleNotifications()"></div>
+
+</div>
+
+<!-- ================= SIDE MENU ================= -->
+<div id="sideMenu" class="side-menu">
+  
+  <a href="/homepage" class="menu-item">
+    🏠 Homepage
+  </a>
+
+  <a href="/data-logs" class="menu-item">
+    📈 Data Logs
+  </a>
+
+  <a href="/upload-section" class="menu-item">
+    ⬆ Upload Section
+  </a>
+
+</div>
+
+<div class="management-page">
+
+  <div class="management-content">
+
+  <div class="prepared-by">
+
+    <img src="{{ url_for('static', filename='images/da-logo.png') }}"
+         alt="Department of Agriculture Logo"
+         class="prep-logo">
+
+    <p class="instruction-text">
+      <i>
+        Prepared by the<br>
+        <strong>Department of Agriculture</strong><br>
+        Bureau of Plant Industry<br>
+        Crop Pest Management Division
+      </i>
+    </p>
+
+    <img src="{{ url_for('static', filename='images/Ellipse 4.png') }}"
+         alt="PinyaSuri Logo"
+         class="prep-logo">
+
+  </div>
+
+</div>
+
+
+<!-- ================== HEADER CARD ================== -->
+<div class="header-card" id="headerCard">
+  <p class="header-text"><strong>How to Keep Your</strong></p>
+  <h2 class="header-title">Pineapples Healthy</h2>
+  <p class="subtext"><strong>Local and International Management Tips</strong></strong></p>
+</div>
+
+
+<!-- ================== DISEASES ================== -->
+<div class="section">
+
+<h3 class="section-title">DISEASES</h3>
+
+<div class="grid">
+
+
+<!-- ================== CROWN ROT ================== -->
+<div class="grid-item"
+  id="crown-rot"
+  data-title="Crown Rot Disease of Pineapple"
+  data-image="{{ url_for('static', filename='images/crownrot.png') }}"
+  data-description="
+    <strong>Causal Organism:</strong>
+    <em><center>Fusarium spp.</center></em><br><br>
+
+    <strong>Symptoms:</strong>
+    <center>Yellowing of the leaves, stunted growth, and crown tissue rotting or decay.</center><br><br>
+
+    <strong>Management Strategies:</strong>
+    <ol>
+      <li>Use of disease-free planting material;</li>
+      <li>Improve drainage and avoid waterlogging;</li>
+      <li>Practice crop rotation combined with field sanitation by removing all infected plants;</li>
+      <li>
+        Introduce biological control approaches:
+        <ol type='a'>
+          <li><em>Trichoderma spp.</em> as antagonistic fungi;</li>
+          <li>
+            <em>Bacillus subtilis</em> and <em>Pseudomonas fluorescens</em>
+            as beneficial bacteria that produce antifungal metabolites;
+          </li>
+          <li>
+            Compost and bio-fertilizers as organic amendments to improve soil microbial diversity
+            and reduce pathogen inoculum;
+          </li>
+        </ol>
+      </li>
+      <li>
+        Apply systemic fungicide treatments through dipping before planting
+        <em>(as a last resort and if disease infection is above economic threshold level)</em>.
+      </li>
+    </ol>
+<br>
+---------------------------------------------
+<br><br>
+
+<strong>Sanhi ng Sakit:</strong>
+    <em><center>Fusarium spp.</center></em><br><br>
+
+    <strong>Mga Sintomas:</strong>
+    <center>Pagdidilaw ng mga dahon, pagkaantala o pagkabansot ng paglaki, at pagkabulok o pagkasira ng tisyu ng korona (crown).</center><br><br>
+
+    <strong>Mga Paraan ng Pamamahala:</strong>
+    <ol>
+      <li>Paggamit ng malusog at walang sakit na mga punla o pananim;</li>
+      <li>Pagpapabuti ng drainage at pag-iwas sa pagbabara ng tubig (waterlogging);</li>
+      <li>Pagsasagawa ng crop rotation na sinasabayan ng field sanitation sa pamamagitan ng pagtanggal at pagsira sa lahat ng mga halamang may impeksiyon;</li>
+      <li>
+        Pagpapakilala ng mga paraang biyolohikal na pagkontrol:
+        <ol type='a'>
+          <li><em>Trichoderma spp.</em> bilang mga antagonistic na fungi;</li>
+          <li>
+            <em>Bacillus subtilis</em> and <em>Pseudomonas fluorescens</em>
+           bilang mga kapaki-pakinabang na bakterya na gumagawa ng mga antifungal na metabolite;
+          </li>
+          <li>
+            Compost at bio-fertilizers bilang mga organikong pantulong upang mapabuti ang pagkakaiba-iba ng mikrobyo sa lupa at mabawasan ang pathogen inoculum;
+          </li>
+        </ol>
+      </li>
+      <li>
+        Paglalapat ng systemic fungicide sa pamamagitan ng pagbabad (dipping) bago itanim
+        <em>(bilang huling opsyon at kung ang antas ng impeksiyon ng sakit ay lampas na sa economic threshold level)</em>.
+      </li>
+    </ol>
+
+  ">
+
+  <img src="{{ url_for('static', filename='images/crownrot.png') }}">
+  <p>Crown Rot</p>
+</div>
+
+
+
+<!-- ================== FRUIT ROT ================== -->
+<div class="grid-item" 
+  id="fruit-rot"
+  data-title="Fruit Rot Disease"
+  data-image="{{ url_for('static', filename='images/fruitrot.png') }}"
+  data-description="
+    <strong>Causal Organism:</strong>
+    <em><center>Phytophthora parasitica (fruit and heart rot)</center></em>
+    <em><center>Thielaviopsis paradoxa (soft rot)</center></em>
+    <br><br>
+
+    <strong>Symptoms:</strong>
+    <center>Soft and water-soaked tissues of the fruit.</center><br><br>
+
+    <strong>Management Strategies:</strong>
+    <ol>
+      <li>Proper drainage systems in the field;</li>
+      <li>Practice sanitation (rouging and removing all infected plants) and crop rotation;</li>
+      <li>Avoid mechanical injuries during handling and harvesting;</li>
+      <li>Sanitize tools to prevent the spread of disease;</li>
+      <li>Use disease-free propagules;</li>
+      <li>
+        Introduce biological control approaches:
+        <ol type='a'>
+          <li><em>Trichoderma spp.</em> as antagonistic fungi;</li>
+          <li>
+            <em>Bacillus subtilis</em> and <em>Pseudomonas fluorescens</em>
+            as beneficial bacteria that produce antifungal metabolites;
+          </li>
+          <li>
+            Compost and bio-fertilizers as organic amendments to improve soil microbial diversity
+            and reduce pathogen inoculum;
+          </li>
+        </ol>
+      </li>
+      <li>
+        Apply copper-based or systemic fungicides
+        <em>(as last resort and if the disease infection is above economic threshold level)</em>.
+      </li>
+    </ol>
+<br>
+---------------------------------------------
+<br><br>
+
+<strong>Sanhi ng Sakit:</strong>
+    <em><center>Phytophthora parasitica (fruit at heart rot)</center></em>
+    <em><center>Thielaviopsis paradoxa (soft rot)</center></em>
+    <br><br>
+
+    <strong>Mga Sintomas:</strong>
+    <center>Malambot at tila basang-basa (water-soaked) na mga tisyu ng prutas.</center><br><br>
+
+    <strong>Mga Paraan ng Pamamahala:</strong>
+    <ol>
+      <li>Pagkakaroon ng maayos na drainage system sa bukid;</li>
+      <li>Pagsasagawa ng sanitation (pagbubunot at pagtanggal ng lahat ng mga halamang may impeksiyon) at crop rotation;</li>
+      <li>Pag-iwas sa mekanikal na pinsala habang hinahawakan at inaani ang mga prutas;</li>
+      <li>Pagdidisimpekta ng mga kasangkapan upang maiwasan ang pagkalat ng sakit;</li>
+      <li>Paggamit ng malulusog at walang sakit na mga propagules (pantanim);</li>
+      <li>
+        Pagpapakilala ng mga paraang biyolohikal na pagkontrol:
+        <ol type='a'>
+          <li><em>Trichoderma spp.</em> bilang mga antagonistic na fungi;</li>
+          <li>
+            <em>Bacillus subtilis</em> and <em>Pseudomonas fluorescens</em>
+           bilang mga kapaki-pakinabang na bakterya na gumagawa ng mga antifungal na metabolite;
+          </li>
+          <li>
+            Compost at bio-fertilizers bilang mga organikong pantulong upang mapabuti ang pagkakaiba-iba ng mikrobyo sa lupa at mabawasan ang pathogen inoculum;
+          </li>
+        </ol>
+      </li>
+      <li>
+        Paglalapat ng copper-based o systemic fungicides
+        <em>(bilang huling opsyon at kung ang antas ng impeksiyon ng sakit ay lampas na sa economic threshold level)</em>.
+      </li>
+    </ol>
+
+  ">
+
+  <img src="{{ url_for('static', filename='images/fruitrot.png') }}">
+  <p>Fruit Rot</p>
+</div>
+
+
+<!-- ================== MEALYBUG WILT DISEASE ================== -->
+<div class="grid-item"
+  id="mealybug-wilt"
+  data-title="Mealybug Wilt Disease"
+  data-image="{{ url_for('static', filename='images/mealybug.jpeg') }}"
+  data-description="
+    <strong>Causal Organism:</strong>
+    <em><center>Pineapple Mealybug Wilt-Associated Viruses (PMWaVs)</center></em>
+        <br><br>
+
+    <strong>Vector:</strong>
+    <em><center>Mealybugs (Dysmicoccus brevipes)</center></em>
+        <br><br>
+
+    <strong>Symptoms:</strong>
+    <center>Leaves turning pink; inward-curlingof the leaves; stunted growth and wilting</center><br><br>
+
+    <strong>Management Strategies:</strong>
+    <ol>
+      <li>1.	Control the mealybugs (vector) and ants (with mutualistic symbiosis with mealybugs) with biological control agents and insecticides (as last resort and if the disease infection is above economic threshold level);</li>
+      <li>
+        Biological Control (against vector)
+        <ol type='a'>
+          <li>Lady beetles (predator) and parasitic wasps (parasitoid);</li>
+          <li>
+            <em>Metarhizium anisopliae</em> and <em>Beauveria bassiana</em>
+            as entomopathogenic fungi;
+          </li>
+          <li>
+            c.	Application of plant extracts and natural compounds, such as Salicylic acid and plant-derived extract as
+          </li>
+        </ol>
+      </li>
+      <li>Use of virus-free planting materials;</li>
+      <li>Subject planting materials to heat treatment to reduce virus load;</li>
+      <li>Apply and implement Integrated pest management (1PM) thru combination of cultural practices with biological methods and chemical controls.</li>
+    </ol>
+<br>
+---------------------------------------------
+<br><br>
+
+<strong>Sanhi ng Sakit:</strong>
+    <em><center>Pineapple Mealybug Wilt-Associated Viruses (PMWaVs)</center></em>
+    <br><br>
+
+<strong>Tagapagdala:</strong>
+    <em><center>Mealybugs (Dysmicoccus brevipes)</center></em>
+        <br><br>
+
+    <strong>Mga Sintomas:</strong>
+    <center>Pagiging kulay rosas ng mga dahon; pagbaluktot paloob ng mga dahon; pagkaantala o pagkabansot ng paglaki at pagkalanta ng halaman.</center><br><br>
+
+    <strong>Mga Paraan ng Pamamahala:</strong>
+    <ol>
+      <li>Pagkontrol sa mga mealybug (vector) at mga langgam (na may mutualistic na ugnayan sa mga mealybug) gamit ang mga biyolohikal na ahente at mga insecticide (bilang huling opsyon at kung ang antas ng impeksiyon ng sakit ay lampas na sa economic threshold level);</li>
+      <li>
+        Biyolohikal na pagkontrol (laban sa vector):
+        <ol type='a'>
+          <li>Mga lady beetle (mandaragit) at parasitic wasps (parasitoid);</li>
+          <li>
+            <em>Metarhizium anisopliae</em> and <em>Beauveria bassiana</em>
+           bilang mga entomopathogenic na fungi;
+          </li>
+          <li>
+            Paglalapat ng mga katas ng halaman at mga likas na compound, tulad ng salicylic acid at mga plant-derived extract;
+          </li>
+        </ol>
+      </li>
+      <li>Paggamit ng mga pantanim na materyales na walang virus;</li>
+      <li>Pagsailalim ng mga pantanim na materyales sa heat treatment upang mabawasan ang virus load;</li>
+      <li>Paglalapat at pagpapatupad ng Integrated Pest Management (IPM) sa pamamagitan ng pagsasama ng mga gawaing kultural, biyolohikal na pamamaraan, at kontrol na kemikal.</li>
+    </ol>
+
+  ">
+
+  <img src="{{ url_for('static', filename='images/mealybug.jpeg') }}">
+  <p>Mealybug Wilt</p>
+</div>
+
+
+<!-- ================== ROOT ROT ================== -->
+<div class="grid-item" 
+  id="root-rot"
+  data-title="Root Rot Disease"
+  data-image="{{ url_for('static', filename='images/rootrot.png') }}"
+  data-description="
+    <strong>Causal Organism:</strong>
+    <em><center>Phytophthora cinnamomi and P. parasitica</center></em>
+    <br><br>
+
+    <strong>Symptoms:</strong>
+    <center>Root rot, poor anchorage, and wilting</center><br><br>
+
+    <strong>Management Strategies:</strong>
+    <ol>
+      <li>Improve soil drainage and avoid water accumulation that leads to waterlogging;</li>
+      <li>Select and use resistant and tolerant varieties;</li>
+      <li>Practice sanitation (rouging and removing all infected plants) and crop rotation;</li>
+      <li>
+        Introduce biological control approaches:
+        <ol type='a'>
+          <li><em>Trichoderma spp.</em> as antagonistic fungi;</li>
+          <li>
+            <em>Bacillus subtilis</em> and <em>Pseudomonas fluorescens</em>
+            as beneficial bacteria that produce antifungal metabolites;
+          </li>
+          <li>
+            Compost and bio-fertilizers as organic amendments to improve soil microbial diversity
+            and reduce pathogen inoculum;
+          </li>
+        </ol>
+      </li>
+      <li>
+        Apply systemic fungicides which target <em>Phytophthora</em>
+        <em>(as last resort and if the disease infection is above economic threshold level)</em>.
+      </li>
+    </ol>
+<br>
+---------------------------------------------
+<br><br>
+
+<strong>Sanhi ng Sakit:</strong>
+    <em><center>Phytophthora cinnamomi at P. parasitica</center></em>
+    <br><br>
+
+    <strong>Mga Sintomas:</strong>
+    <center>Pagkabulok ng ugat, mahinang pagkakakapit o pagkakaangkla ng halaman sa lupa, at pagkalanta.</center><br><br>
+
+    <strong>Mga Paraan ng Pamamahala:</strong>
+    <ol>
+      <li>Pagpapabuti ng drainage ng lupa at pag-iwas sa pag-ipon ng tubig na nagdudulot ng waterlogging;</li>
+      <li>Pagpili at paggamit ng mga barayti na may resistensya at tolerance sa sakit;</li>
+      <li>Pagsasagawa ng sanitation (pagbubunot at pagtanggal ng lahat ng mga halamang may impeksiyon) at crop rotation;</li>
+      <li>
+        Pagpapakilala ng mga paraang biyolohikal na pagkontrol:
+        <ol type='a'>
+          <li><em>Trichoderma spp.</em> bilang mga antagonistic na fungi;</li>
+          <li>
+            <em>Bacillus subtilis</em> and <em>Pseudomonas fluorescens</em>
+           bilang mga kapaki-pakinabang na bakterya na gumagawa ng mga antifungal na metabolite;
+          </li>
+          <li>
+            Compost at bio-fertilizers bilang mga organikong pantulong upang mapabuti ang pagkakaiba-iba ng mikrobyo sa lupa at mabawasan ang pathogen inoculum;
+          </li>
+        </ol>
+      </li>
+      <li>
+        Paglalapat ng mga systemic fungicide na target ang <em>Phytophthora</em>
+        <em>(bilang huling opsyon at kung ang antas ng impeksiyon ng sakit ay lampas na sa economic threshold level)</em>.
+      </li>
+    </ol>
+
+  ">
+
+  <img src="{{ url_for('static', filename='images/rootrot.png') }}">
+  <p>Root Rot</p>
+</div>
+
+</div>
+</div>
+
+
+<!-- ================== DISORDERS ================== -->
+<div class="section">
+
+<h3 class="section-title">DISORDERS</h3>
+
+<div class="grid">
+
+<!-- ================== MULTIPLE CROWN ================== -->
+<div class="grid-item" 
+  id="multiple-crown"
+  data-title="Multiple Crown Disorder"
+  data-image="{{ url_for('static', filename='images/multiplecrown.png') }}"
+  data-description="
+    <strong>Cause:</strong>
+    <em><center>Physiological disorder linked to hormonal imbalance, which cause excessive plant growth</center></em>
+    <br><br>
+
+    <strong>Symptoms:</strong>
+    <center>Formation of multiple crowns that grow from a single fruit</center><br><br>
+
+    <strong>Management Strategies:</strong>
+    <ol>
+      <li>Avoid fertilization of excessive nitrogen;</li>
+      <li>Maintain balanced nutrition and proper plant spacing for optimal growth;</li>
+      <li>Select plant varieties which show lower tendency to develop multiple crowns</li>
+    </ol>
+<br>
+---------------------------------------------
+<br><br>
+
+<strong>Sanhi:</strong>
+    <em><center>Pisiyolohikal na karamdaman na may kaugnayan sa hormonal imbalance, na nagdudulot ng labis na paglaki ng halaman.</center></em>
+    <br><br>
+
+    <strong>Mga Sintomas:</strong>
+    <center>Pagbuo ng maraming korona (multiple crowns) na tumutubo mula sa iisang prutas.</center><br><br>
+
+    <strong>Mga Paraan ng Pamamahala:</strong>
+    <ol>
+      <li>Pag-iwas sa labis na paglalagay ng patabang may mataas na nitrogen;</li>
+      <li>Pagpapanatili ng balanseng nutrisyon at wastong pagitan ng mga halaman para sa optimal na paglaki;</li>
+      <li>Pagpili ng mga barayti ng halaman na may mas mababang tendensiyang magkaroon ng multiple crowns.</li>
+    </ol>
+
+  ">
+  <img src="{{ url_for('static', filename='images/multiplecrown.png') }}">
+  <p>Multiple Crown</p>
+</div>
+
+<!-- ================== FRUIT FASCIATION ================== -->
+<div class="grid-item" 
+  id="fruit-fasciation"
+  data-title="Fruit Fasciation Disease"
+  data-image="{{ url_for('static', filename='images/fruitfasciation.png') }}"
+  data-description="
+    <strong>Cause:</strong>
+    <em><center>Physiological disorder linked to nutrient imbalance, which include excessive nitrogen, insufficient zinc, and calcium</center></em>
+    <br><br>
+
+    <strong>Symptoms:</strong>
+    <center>Abnormal and irregular shape of the fruit while becoming either flat or distorted</center><br><br>
+
+    <strong>Management Strategies:</strong>
+    <ol>
+      <li>Application of balanced fertilizers and avoid excessive nitrogen;</li>
+      <li>The application of foliar sprays should focus on fixing calcium and zinc deficiencies;</li>
+      <li>Application ofmicrobiome enhancement (bio-fertilizers) to improve plant vigor;</li>
+      <li>Maintain proper irrigation and proper plant spacing to reduce plant stress.</li>
+     </ol>
+<br>
+---------------------------------------------
+<br><br>
+
+<strong>Sanhi:</strong>
+    <em><center>Pisiyolohikal na karamdaman na may kaugnayan sa hindi balanseng nutrisyon, kabilang ang labis na nitrogen at kakulangan sa zinc at calcium.</center></em>
+    <br><br>
+
+    <strong>Mga Sintomas:</strong>
+    <center>Hindi normal at hindi regular na hugis ng prutas, na maaaring maging patag o baluktot/deformed.</center><br><br>
+
+    <strong>Mga Paraan ng Pamamahala:</strong>
+    <ol>
+      <li>Paglalapat ng balanseng pataba at pag-iwas sa labis na nitrogen;</li>
+      <li>Paglalapat ng mga foliar spray na nakatuon sa pagtugon sa kakulangan ng calcium at zinc;</li>
+      <li>Paglalapat ng microbiome enhancement (bio-fertilizers) upang mapabuti ang sigla ng halaman;</li>
+      <li>Pagpapanatili ng wastong patubig at tamang pagitan ng mga halaman upang mabawasan ang stress sa halaman.</li>
+    </ol>
+
+  ">
+  <img src="{{ url_for('static', filename='images/fruitfasciation.png') }}">
+  <p>Fruit Fasciation</p>
+</div>
+
+</div>
+</div>
+
+
+</div>
+
+
+<!-- ================== MODAL ================== -->
+<div id="infoModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close-btn" onclick="closeModal()">✖</span>
+
+<img id="modalImage" class="modal-image">
+
+<h3 id="modalTitle"></h3>
+
+<div id="modalDescription"></div>
+
+</div>
+</div>
+
+<!-- ================== SCRIPT ================== -->
+<script>
+
+function toggleNotifications() {
+  const panel = document.getElementById("notificationPanel");
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const panel = document.getElementById("notificationPanel");
+  const bell = document.querySelector(".doorbell");
+  if (!panel.contains(e.target) && !bell.contains(e.target)) panel.style.display = "none";
+});
+
+
+// ===== MODAL =====
+
+const modal = document.getElementById("infoModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDescription");
+const modalImg = document.getElementById("modalImage");
+const headerCard = document.getElementById("headerCard");
+const gridItems = document.querySelectorAll(".grid-item");
+
+function closeModal() {
+  modal.style.display = "none";
+}
+
+gridItems.forEach(item => {
+  item.addEventListener("click", () => {
+
+    modal.style.display = "flex";
+    modalTitle.textContent = item.dataset.title;
+    modalDesc.innerHTML = item.dataset.description || "";
+
+    modalImg.src = item.dataset.image;
+
+  });
+});
+
+
+// HEADER CARD CLICK (GENERAL TIPS)
+
+headerCard.addEventListener("click", () => {
+
+  modal.style.display = "flex";
+  modalImg.src = "{{ url_for('static', filename='images/Group 1 (1).png') }}";
+
+  modalTitle.textContent = "General Pineapple Care";
+
+  modalDesc.innerHTML = `
+    <ul style="text-align:left;">
+      <li>Ensure proper drainage.</li>
+      <li>Use organic compost.</li>
+      <li>Remove infected leaves.</li>
+      <li>Avoid overwatering.</li>
+      <li>Apply expert-approved pesticides.</li>
+    </ul>
+  `;
+});
+
+
+window.onclick = function(e) {
+  if (e.target === modal) closeModal();
+};
+
+/* ================= SIDE MENU ================= */
+function toggleMenu() {
+  const menu = document.getElementById("sideMenu");
+  const overlay = document.getElementById("menuOverlay");
+
+  menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+}
+
+document.getElementById("menuOverlay").addEventListener("click", () => {
+  document.getElementById("sideMenu").classList.remove("active");
+  document.getElementById("menuOverlay").classList.remove("active");
+});
+
+
+
+{% if selected_affliction %}
+document.addEventListener("DOMContentLoaded", () => {
+  const target = document.getElementById(
+    "{{ selected_affliction|lower|replace(' ', '-') }}"
+  );
+
+  if (target) {
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
+});
+{% endif %}
+
+
+</script>
+
+
+</body>
+</html>

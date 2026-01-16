@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Upload Section</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/upload-section.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Black+Han+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+ 
+<!-- ================= NOTIFICATION PANEL ================= -->
+<div id="notificationPanel" class="notification-panel">
+  <h3>New Notifications</h3>
+  <div class="notif-item">📝 New data log uploaded.</div>
+  <div class="notif-item">⚠ Affliction detected in Field A.</div>
+  <p class="nothing" id="noNotif" style="display:none;">No new notifications</p>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+
+  <div class="menu-icon" onclick="toggleMenu()"></div>
+
+  <div class="navbar-center">
+    <h1 class="navbar-title">UPLOAD 
+    <br>SECTION</br></h1>
+  </div>
+
+  <!-- ✅ SAME BELL -->
+  <div class="doorbell" onclick="toggleNotifications()"></div>
+
+</div>
+
+<!-- ================= SIDE MENU ================= -->
+<div id="sideMenu" class="side-menu">
+
+  <a href="/homepage" class="menu-item">
+    🏠 Homepage
+  </a>
+
+  <a href="/data-logs" class="menu-item">
+    📈 Data Logs
+  </a>
+
+  <a href="/management-strategies" class="menu-item">
+    📊 Management Strategies
+  </a>
+
+</div>
+
+  <!-- OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- ================= CONTENT ================= -->
+<div class="upload-page">
+
+  <div class="upload-content">
+
+    <p class="instruction-text">
+      Take or upload a pineapple image to detect possible afflictions.
+    </p>
+
+    <!-- UPLOAD -->
+    <div class="upload-buttons">
+      <label class="upload-btn">
+        <input 
+          type="file" 
+          accept="image/*" 
+          capture="environment"
+          hidden onchange="previewImage(event)"
+        >
+        <img src="{{ url_for('static', filename='images/Google Images.png') }}">
+        <p>Take Photo</p>
+      </label>
+
+      <label class="upload-btn">
+        <input 
+          type="file" 
+          accept="image/*"
+          hidden onchange="previewImage(event)"
+        >
+        <img src="{{ url_for('static', filename='images/Upload.png') }}">
+        <p>Upload Photo</p>
+      </label>
+
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-card">
+
+      <div class="preview-box">
+        <img id="imagePreview" class="uploaded-image" style="display:none;">
+        
+        <div id="previewText">
+          <p>No image uploaded yet.</p>
+          <p>Please upload an image to see preview.</p>
+        </div>
+      </div>
+
+      <div class="result-info" id="resultInfo" style="display:none;">
+        <h3 id="diseaseName"></h3>
+        <p id="recommendation"></p>
+        <p id="timestamp"></p>
+      </div>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="action-buttons">
+      <button class="save-btn">Save to Data Logs</button>
+      <button class="btn management-btn" onclick="goToManagement()">
+    Go to Management Strategies
+</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= SCRIPT ================= -->
+<script>
+/* ================= GLOBAL STATE ================= */
+let analysisResult = {};
+let selectedFile = null;
+
+/* ================= NOTIFICATIONS ================= */
+function toggleNotifications() {
+  const panel = document.getElementById("notificationPanel");
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("click", function (event) {
+  const panel = document.getElementById("notificationPanel");
+  const bell = document.querySelector(".doorbell");
+
+  if (!panel.contains(event.target) && !bell.contains(event.target)) {
+    panel.style.display = "none";
+  }
+});
+
+/* ================= IMAGE PREVIEW + DUMMY AI ================= */
+function previewImage(event) {
+  const img = document.getElementById("imagePreview");
+  const text = document.getElementById("previewText");
+  const resultInfo = document.getElementById("resultInfo");
+
+  const file = event.target.files[0];
+  if (!file) return;
+
+  selectedFile = file;
+
+  img.src = URL.createObjectURL(file);
+  img.style.display = "block";
+  text.style.display = "none";
+  resultInfo.style.display = "block";
+
+  const afflictions = [
+    { name: "Crown Rot Disease", rec: "Yellowing of the leaves, stunted growth, and crown tissue rotting or decay." },
+    { name: "Fruit Rot Disease", rec: "Soft and water-soaked tissues of the fruit. " },
+    { name: "Root Rot Disease", rec: "Root rot, poor anchorage, and wilting." },
+    { name: "Mealybug Wilt Disease", rec: "Leaves turning pink; inward-curlingof the leaves; stunted growth and wilting." },
+    { name: "Fruit Fasciation Disorder", rec: "Abnormal and irregular shape of the fruit while becoming either flat or distorted." },
+    { name: "Multiple Crown Disorder", rec: "Formation of multiple crowns that grow from a single fruit." },
+    { name: "Healthy Pineapple", rec: "No disease detected." }
+  ];
+
+  const selected = afflictions[Math.floor(Math.random() * afflictions.length)];
+
+  document.getElementById("diseaseName").textContent = selected.name;
+  document.getElementById("recommendation").textContent = selected.rec;
+  document.getElementById("timestamp").textContent = new Date().toLocaleString();
+
+  analysisResult = {
+    affliction: selected.name,
+    confidence: selected.name.match(/\((\d+)%\)/)?.[1] / 100 || 0.9,
+    recommendation: selected.rec
+  };
+}
+
+/* ================= SIDE MENU ================= */
+function toggleMenu() {
+  const menu = document.getElementById("sideMenu");
+  const overlay = document.getElementById("menuOverlay");
+
+  menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+}
+
+document.getElementById("menuOverlay").addEventListener("click", () => {
+  document.getElementById("sideMenu").classList.remove("active");
+  document.getElementById("menuOverlay").classList.remove("active");
+});
+
+/* ================= SAVE TO DATA LOGS ================= */
+document.querySelector(".save-btn").addEventListener("click", async () => {
+  if (!selectedFile || !analysisResult.affliction) {
+    alert("Please upload and analyze an image first.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("image", selectedFile);
+  formData.append("affliction", analysisResult.affliction);
+  formData.append("confidence", analysisResult.confidence);
+  formData.append("recommendation", analysisResult.recommendation);
+
+  try {
+    const response = await fetch("/api/save-upload-result", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+    alert(result.message);
+  } catch (err) {
+    console.error(err);
+    alert("Failed to save data log.");
+  }
+});
+
+function goToManagement() {
+    window.location.href = "/management-strategies";
+}
+
+</script>
+
+
+</body>
+</html>

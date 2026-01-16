@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- IMPORTANT → Mobile scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PinyaSuri - Home</title>
+
+  <!-- GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Anton&family=Bungee&family=Lilita+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=BBH+Bogle&display=swap" rel="stylesheet">
+
+
+  <!-- MAIN CSS FILE -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+
+</head>
+
+<body>
+
+
+  <!-- ========================== NAVBAR ========================== -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <div class="ellipse3"></div>
+      <div class="hello-text">HELLO PO!</div>
+      <div class="welcome-back">Welcome Back!</div>
+    </div>
+
+    <div class="navbar-right">
+      <div class="doorbell" onclick="toggleNotifications()"></div>
+    </div>
+  </nav>
+
+  <!-- ========================== HOME SECTION ========================== -->
+  <section class="second-page" id="home">
+
+    <!-- Banner -->
+    <div class="rectangle6"></div>
+
+    <!-- Logo -->
+    <div class="ellipse4"></div>
+
+    <!-- Brand -->
+    <div class="brand">
+      <span class="pinya">PINYA</span><span class="suri">SURI</span>
+    </div>
+
+    <!-- Subtitle -->
+    <h2 class="subtitle-text">
+    An AI-Driven Autonomous Drone System with Grid 
+    <span class="line-break">Localization for Pineapple Afflictions Detection, </span>
+    <span class="line-break">Classification, and Monitoring </span>
+    </h2>
+
+    <!-- MAIN BUTTONS -->
+    <a href="{{ url_for('data_logs') }}" class="rounded-rectangle">
+      <span class="button-text">DATA LOGS</span>
+    </a>
+
+    <a href="{{ url_for('upload_section') }}" class="rounded-rectangle1">
+      <span class="button-text">UPLOAD SECTION</span>
+    </a>
+
+    <a href="{{ url_for('management_strategies') }}" class="rounded-rectangle2">
+      <span class="button-text">
+        MANAGEMENT
+        <span class="line-break">STRATEGIES</span>
+      </span>
+    </a>
+
+    <!-- Footer Links -->
+    <div class="footer-links">
+      <a href="#about" class="about">ABOUT</a>
+      <button class="contact">CONTACT</button>
+    </div>
+
+  </section>
+
+  <!-- ========================== ABOUT SECTION ========================== -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+
+      <h1 class="about-title">ABOUT PINYASURI</h1>
+      <p class="about-desc">
+        PinyaSuri started with one simple goal: to make life easier for pineapple farmers. Many farmers still 
+        spend hours walking under the sun just to check if their plants are healthy — a tiring and time-consuming task. 
+        We wanted to build something that could help them work smarter, not harder.
+      </p>
+      <p class="about-desc">
+        That’s why we created PinyaSuri, an AI-powered drone system designed especially for Queen pineapple farms. 
+        Our drone flies over the field on its own, takes clear images of the crops, and uses artificial intelligence to 
+        spot signs of common pineapple diseases. After the flight, the results appear on an easy-to-use website where 
+        farmers can quickly see which parts of their field need attention and what actions they can take.
+      </p>
+      <p class="about-desc">
+        PinyaSuri helps farmers save time, reduce effort, and protect their harvests — all through a system that’s 
+        simple, practical, and designed with their needs in mind. We believe technology should be easy to use, affordable, 
+        and helpful for real people. And with every healthy pineapple we help protect, we’re one step closer to supporting 
+        stronger harvests and better livelihoods for Filipino farmers.
+      </p>
+
+      <h1 class="about-title" style="margin-top:40px;">TUNGKOL SA PINYASURI</h1>
+
+      <p class="about-desc">
+        Nagsimula ang PinyaSuri sa isang simpleng layunin: mas mapadali ang buhay ng mga magsasaka ng pinya. Hanggang ngayon, 
+        marami pa rin ang naglalakad nang oras-oras sa ilalim ng mainit na araw para lang makita kung may sakit ba ang kanilang 
+        mga tanim. Nakakapagod ito, at minsan huli na ang pagbabantay.
+      </p>
+
+      <p class="about-desc">
+        Kaya binuo namin ang PinyaSuri — isang AI-powered drone system para sa mga taniman ng Queen pineapple. Lumilipad ang drone 
+        nang kusa, kumukuha ng malinaw na larawan ng bawat bahagi ng taniman, at gamit ang artificial intelligence, natutukoy nito 
+        ang mga karaniwang sakit ng pinya. Pagkatapos ng flight, lumalabas ang mga resulta sa isang website na madaling gamitin, 
+        kung saan makikita agad ng mga magsasaka kung aling bahagi ng taniman ang may problema at kung ano ang dapat gawin.
+      </p>
+
+      <p class="about-desc">
+        Tinutulungan ng PinyaSuri ang mga magsasaka na makatipid ng oras, magbawas ng pagod, at maprotektahan ang kanilang 
+        ani — gamit ang teknolohiyang simple, praktikal, at talaga namang para sa kanila. Naniniwala kami na ang teknolohiya 
+        ay dapat abot-kaya, madaling matutunan, at kapaki-pakinabang. At sa bawat pinya na natutulungan naming protektahan, 
+        isang hakbang ito patungo sa mas malusog na ani at mas matatag na kabuhayan para sa mga magsasakang Pilipino.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ========================== CONTACT MODAL ========================== -->
+  <div id="contactModal" class="modal-overlay">
+
+    <div class="modal-box">
+      <span class="close-btn" onclick="closeContact()">✖</span>
+
+      <h1 class="contact-title">CONTACT US</h1>
+
+      <div class="contact-list">
+
+        <!-- PERSON BLOCKS -->
+        <div class="contact-card">
+          <h3>
+            Roxas, April T.
+            <span class="role">(Lead Proponent)</span>
+          </h3>
+          <p>apriltroxas@iskolarngbayan.pup.edu.ph</p>
+          <p>aprilroxas.univ@gmail.com</p>
+          <p>0993 328 2173 / 0949 564 6903</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>
+            Purca, Jeanne Mae M.
+            <span class="role">(Co-lead Proponent)</span>
+          </h3>
+          <p>jeannemaempurca@iskolarngbayan.pup.edu.ph</p>
+          <p>jeannemaemanicpurca@gmail.com</p>
+          <p>0930 149 4294</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>
+            De Guzman, Andre Marione D.
+            <span class="role">(Member)</span>
+          </h3>
+          <p>andreamarioneddeguzman@iskolarngbayan.pup.edu.ph</p>
+          <p>andreamarioned1@gmail.com</p>
+          <p>0966 821 7753</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>
+            Hernandez, Daniella Kim C.
+            <span class="role">(Member)</span>
+          </h3>
+          <p>daniellakimchernandez@iskolarngbayan.pup.edu.ph</p>
+          <p>dnllkmhrnndz@gmail.com</p>
+          <p>0907 980 8766</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>
+            Licayan, James Bernard A.
+            <span class="role">(Member)</span>
+          </h3>
+          <p>jamesbernardalicayan@iskolarngbayan.pup.edu.ph</p>
+          <p>jblicayan28@gmail.com</p>
+          <p>0923 179 3365</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>
+            Libarnes, Ashley Louise O.
+            <span class="role">(Member)</span>
+          </h3>
+          <p>ashleylouiseolibarnes@iskolarngbayan.pup.edu.ph</p>
+          <p>shleylibarnes12@gmail.comm</p>
+          <p>0992 465 3954</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notif-wrapper">
+    <span onclick="toggleNotif()"></span>
+
+    <div id="notifPanel" class="notif-panel">
+      <h4>Notifications</h4>
+      <ul id="notifList"></ul>
+    </div>
+  </div>
+
+  <!-- ========================== SCRIPTS ========================== -->
+  <script>
+
+    // CONTACT MODAL CONTROLS
+    const contactModal = document.getElementById("contactModal");
+    const contactBtn = document.querySelector(".contact");
+
+    contactBtn.onclick = () => {
+      contactModal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    };
+
+    function closeContact() {
+      contactModal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+
+    contactModal.onclick = function(e) {
+      if (e.target === contactModal) closeContact();
+    };
+
+    // NOTIFICATION PANEL
+    function toggleNotif() {
+  document.getElementById("notifPanel").classList.toggle("show");
+}
+
+fetch("/api/notifications")
+  .then(res => res.json())
+  .then(data => {
+    const list = document.getElementById("notifList");
+    list.innerHTML = "";
+
+    data.forEach(n => {
+      list.innerHTML += `
+        <li>
+          <p>${n.message}</p>
+          <small>${n.timestamp}</small>
+        </li>
+      `;
+    });
+  });
+
+    document.addEventListener("click", function(event) {
+      const panel = document.getElementById("notificationPanel");
+      const bell = document.querySelector(".doorbell");
+
+      if (panel.style.display === "block" &&
+          !panel.contains(event.target) &&
+          !bell.contains(event.target)) {
+        panel.style.display = "none";
+      }
+    });
+
+  </script>
+
+</body>
+</html>

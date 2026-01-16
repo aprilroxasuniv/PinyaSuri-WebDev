@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Logs - Pinyasuri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/data-logs.css') }}">
+
+</head>
+
+<body>
+
+<!-- NOTIFICATION PANEL -->
+<div class="notification-panel" id="notificationPanel">
+  <h3>New Notifications</h3>
+
+  <div class="notif-item">📝 New data log uploaded.</div>
+  <div class="notif-item">⚠ Affliction detected in Field A.</div>
+
+  <p class="nothing" id="noNotif" style="display:none;">No new notifications</p>
+</div>
+
+
+<section class="data-logs-page">
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+
+    <div class="menu-icon" onclick="toggleMenu()"></div>
+
+    <div class="navbar-center">
+      <div class="navbar-title">DATA LOGS</div>
+      <div class="subtitle">Select any log for a full review.</div>
+    </div>
+
+    <!-- ✅ WHITE BELL IS NOW THE NOTIFICATION BUTTON -->
+    <div class="doorbell" onclick="toggleNotifications()"></div>
+
+  </div>
+
+  <!-- ================= SIDE MENU ================= -->
+  <div id="sideMenu" class="side-menu">
+
+    <a href="/homepage" class="menu-item">
+      🏠 Homepage
+    </a>
+
+    <a href="/upload-section" class="menu-item">
+      ⬆ Upload Section
+    </a>
+
+    <a href="/management-strategies" class="menu-item">
+      📊 Management Strategies
+    </a>
+
+  </div>
+
+
+   <!-- OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- LOG ENTRIES -->
+<div class="logs-container">
+
+{% for log in logs %}
+
+<div class="log-card"
+     {% if log.type == "flight" %}
+       onclick="location.href='/data-log/{{ log.id }}'"
+     {% else %}
+       onclick="openUploadModal({{ loop.index0 }})"
+     {% endif %}>
+
+  <!-- IMAGE -->
+  <div class="log-image">
+    {% if log.type == "flight"
+          and log.waypoints
+          and log.waypoints|length > 0
+          and log.waypoints[0].image %}
+      <img src="{{ url_for('static', filename=log.waypoints[0].image) }}">
+    {% elif log.image %}
+      <img src="{{ url_for('static', filename=log.image) }}">
+    {% else %}
+      <img src="{{ url_for('static', filename='images/placeholder.jpg') }}">
+    {% endif %}
+  </div>
+
+  <div class="log-details">
+
+    <div class="log-date-badge">
+      <strong>{{ log.date }}</strong>
+    </div>
+
+    <div class="log-text">
+
+      <!-- AFFLICTION -->
+      <div class="log-affliction">
+        <strong>Affliction(s):</strong>
+        {% if log.type == "flight" %}
+          {{ log.summary.dominant_affliction }}
+        {% else %}
+          {{ log.affliction }}
+        {% endif %}
+      </div>
+
+      <!-- META -->
+      <div class="log-meta">
+        {% if log.type == "flight" %}
+          <strong>Waypoints:</strong> {{ log.waypoints | length }}<br>
+          <strong>Log Type:</strong> Flight Log
+        {% else %}
+          <strong>Confidence:</strong>
+          {{ (log.confidence * 100) | round(1) }}%<br>
+          <strong>Log Type:</strong> Uploaded
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+<!-- UPLOAD MODAL OVERLAY -->
+  <div id="uploadModal" class="modal-overlay">
+  <div class="modal-card">
+
+    <span class="close-btn" onclick="closeUploadModal()">×</span>
+
+    <img id="modalImage" class="modal-image">
+
+    <p id="modalDateTime"></p>
+    <h3 id="modalAffliction"></h3>
+    <p id="modalConfidence"></p>
+    
+
+    <div class="modal-section">
+      <h4>SYMPTOMS:</h4>
+      <p id="modalRecommendation"></p>
+    </div>
+
+    <div class="modal-section">
+      <h4>Management Strategies:</h4>
+
+      <div id="strategyButtons" class="strategy-buttons">
+        <!-- buttons injected dynamically -->
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+
+
+
+
+<script>
+const logsData = {{ logs | tojson | safe }};
+
+function openUploadModal(index) {
+  const log = logsData[index]; // ✅ DEFINE FIRST
+
+  /* ---------- IMAGE ---------- */
+  const imgPath =
+    log.image ||
+    (log.waypoints && log.waypoints.length > 0
+      ? log.waypoints[0].image
+      : "");
+
+  document.getElementById("modalImage").src =
+    imgPath ? "/static/" + imgPath : "";
+
+  /* ---------- TIMESTAMP (DATE + TIME) ---------- */
+  const timestampText =
+    log.date && log.time
+      ? `${log.date} - ${log.time}`
+      : log.timestamp
+      ? `${log.timestamp}`
+      : "";
+
+  document.getElementById("modalDateTime").innerText = timestampText;
+
+  /* ---------- AFFLICTIONS ---------- */
+  const afflictions = log.summary?.dominant_affliction
+    ? [log.summary.dominant_affliction]
+    : [];
+
+  document.getElementById("modalAffliction").innerText =
+    afflictions.join(", ");
+
+  /* ---------- CONFIDENCE ---------- */
+  document.getElementById("modalConfidence").innerText =
+    log.confidence != null
+      ? `Confidence: ${(log.confidence * 100).toFixed(1)}%`
+      : "Confidence: —";
+
+  /* ---------- SYMPTOMS ---------- */
+  document.getElementById("modalRecommendation").innerText =
+    log.recommendation || "No symptoms recorded.";
+
+  /* ---------- MANAGEMENT STRATEGY BUTTONS ---------- */
+  const container = document.getElementById("strategyButtons");
+  container.innerHTML = "";
+
+  afflictions.forEach(affliction => {
+    const btn = document.createElement("button");
+    btn.className = "strategy-btn";
+    btn.innerText = affliction;
+
+    btn.onclick = () => {
+      window.location.href =
+        `/management-strategies?affliction=${encodeURIComponent(affliction)}`;
+    };
+
+    container.appendChild(btn);
+  });
+
+  /* ---------- OPEN MODAL ---------- */
+  document.getElementById("uploadModal").classList.add("active");
+}
+
+/* ---------- CLOSE MODAL ---------- */
+function closeUploadModal() {
+  document.getElementById("uploadModal").classList.remove("active");
+}
+
+document.getElementById("uploadModal").addEventListener("click", function (e) {
+  if (e.target === this) closeUploadModal();
+});
+
+/* ================= SIDE MENU ================= */
+function toggleMenu() {
+  const menu = document.getElementById("sideMenu");
+  const overlay = document.getElementById("menuOverlay");
+
+  menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+}
+
+document.getElementById("menuOverlay").addEventListener("click", () => {
+  document.getElementById("sideMenu").classList.remove("active");
+  document.getElementById("menuOverlay").classList.remove("active");
+});
+
+</script>
+
+
+</body>
+</html>

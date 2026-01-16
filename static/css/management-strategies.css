@@ -1,0 +1,509 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+  color: white;
+  text-align: center;
+}
+
+/* CONTENT */
+.management-content {
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+  }
+
+/* PREPARED BY SECTION WITH LOGOS */
+.prepared-by {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.prep-logo {
+  width: 55px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.instruction-text {
+  font-size: 11px;
+  line-height: 1.4;
+  max-width: 260px;
+  text-align: center;
+}
+
+
+.management-page {
+  padding-top: 130px;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;   /* ✅ stays visible on scroll */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1900px;
+  height: 110px;
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  border-radius: 70px;
+  box-shadow: 5px 20px 5px rgba(0,0,0,0.5);
+  z-index: 10;
+  overflow: visible;   /* ✅ prevents clipping */
+}
+
+.menu-icon {
+  width: 35px;
+  height: 40px;
+  margin-left: 10px;
+  background: url('../images/Menu.png') no-repeat center/contain;
+}
+
+.navbar-title {
+  color: #FFD51E;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 50px;
+  letter-spacing: 2px;
+  text-shadow: 2px 3px 4px rgba(0,0,0,0.6);
+  line-height: 1.2;
+}
+
+.doorbell {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  background: url('../images/doorbell.png') no-repeat center/contain;
+}
+
+/* HEADER CARD */
+.header-card {
+  position: relative;
+  background: rgba(239, 252, 232, 0.6); 
+  padding: 25px;
+  width: 85%;
+  max-width: 1000px;
+  margin: 50px auto 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* Add background image with 20% transparency overlay */
+.header-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/Group\ 1\ \(1\).png") center/cover no-repeat;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.header-card * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Text Styling */
+.header-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000;
+}
+
+.header-title {
+  color: #FFD51E;
+  margin: 0px 0;
+  font-size: 35px;
+  font-family: 'Black Han Sans', sans-serif;
+  -webkit-text-stroke: 0.2px black; 
+  text-shadow:
+    -0.2px -0.2px 0 black,
+     0.2px -0.2px 0 black,
+    -0.2px  0.2px 0 black,
+     0.2px  0.2px 0 black; 
+
+}
+
+.remedies-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  animation: fadeIn 0.5s ease-in;
+}
+
+.remedy-section h3 {
+  color: #FFD51E;
+  font-size: 22px;
+  text-align: left;
+}
+
+.remedy-section ul {
+  text-align: left;
+  line-height: 1.6;
+  margin-left: 20px;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+  margin: -0.1px;
+}
+
+/* SECTION STYLES */
+.section {
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  background: rgba(1, 46, 22, 0.7);
+  border: 2px dashed #FFFF;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.section-title {
+  color: #FFFF;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 22px;
+  margin-bottom: 20px;
+  letter-spacing:   2px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.grid-item {
+  width: 45%;
+  border-radius: 25px;
+  padding: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 213, 30, 0.7);
+}
+
+.grid-item img {
+  width: 90%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.grid-item p {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 30, 10, 0.9);
+  justify-content: center;
+  align-items: center;
+
+  
+
+}
+
+
+.modal-content {
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 420px;
+  max-height: 85vh;
+  text-align: center;
+  color: white;
+
+  border-radius: 18px;
+  padding: 16px;
+  overflow-y: auto;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.18);
+
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.25s ease;
+
+
+}
+
+
+.modal-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* Modal text formatting */
+#modalDescription {
+  text-align: left;           /* ✅ base alignment */
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* Keep headings centered */
+#modalDescription strong,
+#modalTitle {
+  text-align: center;
+  display: block;
+}
+
+/* Ordered & unordered lists */
+#modalDescription ol,
+#modalDescription ul {
+  margin-left: 20px;
+  padding-left: 20px;
+  text-align: left;           /* ✅ left-aligned lists */
+}
+
+/* Nested lists (a, b, c) */
+#modalDescription ol ol {
+  margin-top: 6px;
+  margin-left: 20px;
+}
+
+/* List items spacing */
+#modalDescription li {
+  margin-bottom: 6px;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #FFD51E;
+  border-radius: 4px;
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.modal-content h3 {
+  color: #FFD51E;
+  margin-bottom: 8px;
+}
+
+.modal-content p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ========== NOTIFICATION BELL ========== */
+
+/* NOTIFICATION PANEL */
+.notification-panel {
+  display: none;
+  position: absolute;
+  top: 55px;  /* appears below bell */
+  right: 0;
+  width: 260px;
+  
+  background: white;
+  color: black;
+  border-radius: 12px;
+  padding: 12px;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,.35);
+
+  /* MOST IMPORTANT FIX */
+  z-index: 99999;
+
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Title */
+.notification-panel h3 {
+  margin: 5px 0 10px;
+  font-size: 16px;
+  color: #25691D;
+}
+
+/* Each item */
+.notif-item {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 7px;
+  background: #F1F9F1;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.notif-item:hover {
+  background: #dff3df;
+}
+
+.nothing {
+  text-align: center;
+  font-size: 13px;
+  color: gray;
+}
+
+/* MENU OVERLAY */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 900;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+ /* SIDE MENU */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 200px;
+    height: 100vh;
+    background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+    padding: 80px 20px 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.side-menu a {
+  color: #FFD51E;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 12px 20px;
+  font-weight: 600;
+}
+
+.side-menu a:hover {
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+}
+
+/* When menu is active */
+.side-menu.active {
+  left: 0;
+}
+
+.menu-item {
+  display: block;
+  padding: 16px 24px;
+  color: #f4d35e;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+@media screen and (max-width: 600px) {
+
+  .navbar-title {
+    font-size: 25px;      /* reduce size */
+    line-height: 1.1;     /* tighter spacing */
+    text-align: center;
+  }
+
+  .navbar {
+    height: 90px;         /* slightly smaller navbar */
+    padding: 0 1.2rem;
+  }
+
+}
+
+/* PREPARED BY SECTION WITH LOGOS */
+.prepared-by {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.prep-logo {
+  width: 90px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.instruction-text {
+  font-size: 11px;
+  line-height: 1.4;
+  max-width: 260px;
+  text-align: center;
+}
+
+.bpi-disease-card {
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 8px 15px rgba(0,0,0,.6);
+  line-height: 1.6;
+}
+
+.bpi-disease-card h3 {
+  color: #FFD51E;
+  margin-bottom: 10px;
+}
+
+.bpi-disease-card ol {
+  padding-left: 20px;
+}
+
+.bpi-disease-card ol li {
+  margin-bottom: 6px;
+}
+
+.strategy-card.highlight {
+  border: 2px solid #2ecc71;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+  background: #f6fff9;
+}
+
+.grid-item.highlight {
+  outline: 3px solid #2ecc71;
+  box-shadow: 0 0 18px rgba(46, 204, 113, 0.6);
+  transform: scale(1.03);
+}
