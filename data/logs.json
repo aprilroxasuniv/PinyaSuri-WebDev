@@ -1,0 +1,54 @@
+[
+    {
+        "type": "upload",
+        "date": "January 14, 2026",
+        "time": "21:59:18",
+        "image": "uploads/1000045195.jpg",
+        "affliction": "Fruit Fasciation Disorder",
+        "afflictions": [
+            "Fruit Fasciation Disorder"
+        ],
+        "confidence": 0.9,
+        "recommendation": "Abnormal and irregular shape of the fruit while becoming either flat or distorted.",
+        "timestamp": "January 14, 2026 21:59:18"
+    },
+    {
+        "id": "FLIGHT_03",
+        "type": "flight",
+        "date": "January 10, 2026",
+        "start_time": "09:42",
+        "end_time": "10:03",
+        "image": null,
+        "summary": {
+            "total_waypoints": 3,
+            "healthy_count": 0,
+            "diseased_count": 3,
+            "dominant_affliction": "Fruit Fasciation Disorder",
+            "overall_risk": "High",
+            "flight_status": "Attention Needed"
+        },
+        "waypoints": [
+            {
+                "waypoint_id": "WP1",
+                "image": "wp1.jpg",
+                "affliction": "Fruit Fasciation Disorder",
+                "confidence": 0.96,
+                "recommendation": "Apply appropriate treatment"
+            },
+            {
+                "waypoint_id": "WP2",
+                "image": "wp2.jpg",
+                "affliction": "Mealybug Wilt Disease",
+                "confidence": 0.9,
+                "recommendation": "Apply appropriate treatment"
+            },
+            {
+                "waypoint_id": "WP3",
+                "image": "wp3.jpg",
+                "affliction": "Root Rot Disease",
+                "confidence": 0.85,
+                "recommendation": "Apply appropriate treatment"
+            }
+        ]
+    }
+]

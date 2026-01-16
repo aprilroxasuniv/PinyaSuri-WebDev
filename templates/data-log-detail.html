@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Log Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/data-log-detail.css') }}">
+
+</head>
+<body>
+
+<!-- NOTIFICATION PANEL -->
+<div class="notification-panel" id="notificationPanel">
+  <h3>New Notifications</h3>
+
+  <div class="notif-item">📝 New data log uploaded.</div>
+  <div class="notif-item">⚠ Affliction detected in Field A.</div>
+
+  <p class="nothing" id="noNotif" style="display:none;">No new notifications</p>
+</div>
+
+
+<section class="data-logs-page">
+<!-- NAVBAR -->
+  <div class="navbar">
+
+    <div class="menu-icon" onclick="toggleMenu()"></div>
+
+    <div class="navbar-center">
+    <div class="navbar-title">DETAILED LOGS</div>
+      <div class="subtitle">Flight Log Details</div>
+    </div>
+
+    <!-- ✅ WHITE BELL IS NOW THE NOTIFICATION BUTTON -->
+    <div class="doorbell" onclick="toggleNotifications()"></div>
+
+  </div>
+
+<!-- ================= SIDEMENU ================= -->
+<div class="side-menu" id="sideMenu">
+  <a href="/homepage">🏠 Homepage</a><br><br>
+  <a href="/data-logs">📈 Data Logs</a><br><br>
+  <a href="/upload-section">⬆ Upload Section</a><br><br>
+  <a href="/management-strategies">📊 Management Strategies</a>
+</div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- FLIGHT INFO -->
+  <div class="log-header card">
+    <p class="log-title">{{ log.id }}</p>
+    <p class="log-date">{{ log.date }} · {{ log.start_time or '' }}</p>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-card card">
+    <img src="{{ url_for('static', filename='images/map-sample.png') }}" alt="Flight Map">
+  </div>
+
+<!-- ================= SUMMARY CARD ================= -->
+<div class="summary-card card">
+  <h2 class="summary-title">Flight Summary</h2>
+
+  <table class="summary-table">
+    <tr>
+      <td>Total Waypoints</td>
+      <td>{{ log.summary.total_waypoints }}</td>
+    </tr>
+    <tr>
+      <td>Captured Waypoints</td>
+      <td>{{ log.summary.completed_waypoints }}</td>
+    </tr>
+    <tr>
+      <td>Mission Status</td>
+      <td class="{{ 'status-complete' if log.summary.mission_status == 'Completed' else 'status-incomplete' }}">
+        {{ log.summary.mission_status }}
+      </td>
+    </tr>
+    <tr>
+      <td>Pineapples Detected</td>
+      <td>{{ log.summary.pineapple_detected }}</td>
+    </tr>
+    <tr>
+      <td>Healthy Pineapples</td>
+      <td class="healthy">{{ log.summary.healthy }}</td>
+    </tr>
+    <tr>
+      <td>Afflicted Pineapples</td>
+      <td class="afflicted">{{ log.summary.black_rot }}</td>
+    </tr>
+    <tr>
+      <td>Most Common Affliction</td>
+      <td class="highlight">{{ log.summary.common_affliction }}</td>
+    </tr>
+    <tr>
+      <td>Avg. Confidence</td>
+      <td>{{ log.summary.average_confidence }}%</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ================= PAGE ================= -->
+<div class="log-detail-page">
+
+  <!-- WAYPOINTS -->
+ {% for wp in log.waypoints %}
+<div class="waypoint card">
+  <h3 class="waypoint-title">Waypoint {{ loop.index }}</h3>
+
+  <!-- IMAGE -->
+  <img 
+    src="{{ url_for('static', filename=wp.image) }}"
+    class="log-image clickable-image"
+    onclick ="openImageModal(this.src)"
+  >
+
+  <!-- SUMMARY STATS -->
+  <table class="waypoint-summary">
+    <tr>
+      <td>Total Pineapples</td>
+      <td class="highlight">{{ wp.total }}</td>
+    </tr>
+    <tr>
+      <td>Healthy</td>
+      <td class="healthy">{{ wp.healthy }}</td>
+    </tr>
+    <tr>
+      <td>Afflicted</td>
+      <td class="afflicted">{{ wp.afflicted }}</td>
+    </tr>
+  </table>
+
+  <!-- AFFLICTIONS -->
+  <div class="affliction-box">
+    <p class="affliction-title">Afflictions Breakdown</p>
+
+    {% for a in wp.afflictions %}
+    <div class="affliction-row">
+      <span>{{ a.name }}</span>
+      <span class="afflicted">{{ a.count }}</span>
+    </div>
+    {% endfor %}
+  </div>
+
+  <a href="/management-strategies" class="manage-btn">
+    Go to Management Strategies
+  </a>
+</div>
+{% endfor %}
+
+
+</div>
+
+<script>
+function toggleNotifications(event) {
+  event.stopPropagation();
+  const panel = document.getElementById("notificationPanel");
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+
+/* ================= SIDE MENU ================= */
+function toggleMenu() {
+  const menu = document.getElementById("sideMenu");
+  const overlay = document.getElementById("menuOverlay");
+
+  menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+}
+
+document.getElementById("menuOverlay").addEventListener("click", () => {
+  document.getElementById("sideMenu").classList.remove("active");
+  document.getElementById("menuOverlay").classList.remove("active");
+});
+
+/* ================= OPEN IMAGE ================= */
+function openImageModal(src) {
+  document.getElementById("modalImage").src = src;
+  document.getElementById("imageModal").classList.add("active");
+}
+
+function closeImageModal() {
+  document.getElementById("imageModal").classList.remove("active");
+}
+
+
+</script>
+
+<div id="imageModal" class="image-modal" onclick="closeImageModal()">
+  <span class="close-modal">&times;</span>
+  <img id="modalImage">
+</div>
+
+</body>
+</html>

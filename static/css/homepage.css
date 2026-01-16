@@ -1,0 +1,415 @@
+/* ===================== GLOBAL ===================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #0b3d1f, #1b5e30);
+  color: white;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: 60px;
+  background: linear-gradient(to right, #064d29, #0a6b3a);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ellipse3 {
+  width: 42px;
+  height: 42px;
+  background: url('../images/Ellipse 3.png') center/cover no-repeat;
+}
+
+.hello-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFD51E;
+}
+
+.welcome-back {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+
+.doorbell {
+  width: 29px;
+  height: 29px;
+  background: url('../images/Doorbell.png') center/contain no-repeat;
+  cursor: pointer;
+}
+
+/* ================= NOTIFICATION PANEL ================= */
+.notification-panel {
+  position: fixed;
+  top: 78px;
+  right: 10px;
+  width: 230px;
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.3);
+  display: none;
+  z-index: 2000;
+}
+
+.notification-panel h3 {
+  font-size: 14px;
+  color: #1b5e30;
+  margin-bottom: 8px;
+}
+
+.notif-item {
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 8px;
+  background: #1b5e30;
+  margin-bottom: 6px;
+}
+
+.nothing {
+  font-size: 12px;
+  color: gray;
+  text-align: center;
+}
+
+/* ================= HERO ================= */
+.second-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+  padding-top: 90px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* ================= LOGO ================= */
+.ellipse4 {
+  width: 140px;
+  height: 140px;
+  background: url('../images/Ellipse 4.png') center/contain no-repeat;
+  margin-top: -150px;
+  z-index: 2;
+
+  /* Lift effect */
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45))
+          drop-shadow(0 0 10px rgba(255, 213, 30, 0.35));
+
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* ================= BANNER ================= */
+.rectangle6 {
+  width: 90%;
+  height: 180px;
+  background: url('../images/IMG_3549.gif') center/cover no-repeat;
+  border-radius: 22px;
+  box-shadow: 0 14px 20px rgba(0,0,0,.5);
+}
+
+/* ===================== BRAND ===================== */
+.brand {
+  font-family: 'BBH Bogle', sans-serif;
+  font-size: 70px;
+  margin-top: 30px;
+  text-shadow:
+    0 4px 10px rgba(0,0,0,.9),
+    0 10px 25px rgba(0,0,0,.6);
+}
+
+.pinya {
+  color: #ffd54f;
+}
+
+.suri {
+  color: white;
+}
+
+.subtitle-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  margin-top: 8px;
+  text-align: center;
+
+  /* FORCE PROPER WIDTH */
+  display: block;
+  width: 100%;
+  max-width: 360px;
+
+  margin: 2px auto 28px;
+  padding: 0 12px;
+
+  line-height: 1.7;
+  text-align: center;
+  opacity: 0.95;
+
+  /* TEXT FLOW FIX */
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* ===================== BUTTONS ===================== */
+.rounded-rectangle,
+.rounded-rectangle1,
+.rounded-rectangle2 {
+  width: 85%;
+  height: 58px;
+  margin: 15px auto;
+  background: #f3f3f3;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.45),
+    inset 0 -3px 6px rgba(0,0,0,.15);
+  transition: transform .15s ease;
+  margin-top: -3px;
+}
+
+.rounded-rectangle:active,
+.rounded-rectangle1:active,
+.rounded-rectangle2:active {
+  transform: scale(0.96);
+}
+
+/* BUTTON TEXT */
+.button-text {
+  font-family: 'BBH Hegarty', sans-serif;
+  font-size: 22px;
+  color: #1b5e30;
+  letter-spacing: -0.1px;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.line-break {
+  display: block;
+  margin-top: -4px;
+}
+
+/* ===================== FOOTER LINKS ===================== */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 100px;              /* space between About & Contact */
+  margin-top: 30px;
+}
+
+.about,
+.contact {
+  background: none;       /* 🔥 removes button background */
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  padding: 0;
+  color: #ffd54f;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Optional hover effect */
+.about:hover,
+.contact:hover {
+  text-decoration: underline;
+}
+
+/* ===================== ABOUT SECTION ===================== */
+.about-section {
+  background: #f4fbe6;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center; /* centers the pill */
+}
+
+/* GREEN ROUNDED TITLE */
+.about-title {
+  display: inline-block;
+  background: #1b5e30;
+  color: #ffd54f;
+  padding: 12px 30px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+
+  /* CENTER IT */
+  margin: -20px auto 20px auto; /* 👈 moves it UP */
+}
+
+/* PARAGRAPH STYLE */
+.about-desc {
+  line-height: 1.8;
+  font-size: 0.5rem;
+  margin-bottom: 20px;
+  text-align: justify;
+  color: #1b5e30;
+}
+
+/* SPACE BETWEEN ENGLISH & FILIPINO SECTIONS */
+.about-title + .about-desc {
+  margin-top: 16px;
+  margin: 0 auto 24px auto; /* 👈 centers it */
+}
+
+/* MOBILE TWEAKS */
+@media (max-width: 600px) {
+  .about-title {
+    font-size: 1.2rem;
+    padding: 10px 22px;
+  }
+
+  .about-desc {
+    font-size: 0.95rem;
+  }
+}
+
+/* ===================== MODAL OVERLAY ===================== */
+.modal-overlay {
+  display: none;              /* hidden by default */
+  position: fixed;            /* THIS MAKES IT FLOAT */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  justify-content: center;    /* center horizontally */
+  align-items: center;        /* center vertically */
+
+  z-index: 9999;              /* ABOVE EVERYTHING */
+}
+
+/* ===================== MODAL BOX ===================== */
+.modal-box {
+  width: 92%;
+  max-height: 82vh;
+
+  background: #eaf6df;
+  border-radius: 22px;
+  padding: 14px;
+
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0,0,0,.8);
+}
+
+/* LIST */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* CARD */
+.contact-card {
+  background: #1b5e30;
+  border-radius: 14px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+}
+
+/* NAME + ROLE */
+.contact-card h3 {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffd54f;
+  text-align: center;
+}
+
+.contact-card .role {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #ffffff;
+  opacity: 0.85;
+}
+
+/* TEXT */
+.contact-card p {
+  margin: 2px 0;
+  font-size: 0.75rem;
+  color: #ffffff;
+  text-align: center;
+
+  /* FIX LONG EMAILS */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* ===================== CLOSE BUTTON ===================== */
+.close-btn {
+  position: relative;
+  top: 3px;
+  bottom: 3px;
+  left: 16px;
+
+  font-size: 22px;
+  font-weight: bold;
+
+  color: #1b5e30;          /* DARK GREEN */
+  cursor: pointer;
+
+  z-index: 10000;
+}
+
+/* ===================== CONTACT TITLE ===================== */
+.contact-title {
+  text-align: center;
+  color: #1b5e30;        /* DARK GREEN */
+  font-weight: 800;
+  font-size: 26px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+
+.notif-panel {
+  display: none;
+  position: absolute;
+  right: 10px;
+  background: #184c35;
+  width: 280px;
+  border-radius: 10px;
+}
+
+.notif-panel.show {
+  display: block;
+}
+
+.notif-panel li {
+  padding: 10px;
+  border-bottom: 1px solid #2e6b4c;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mabuhay! Welcome Page</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=BBH+Bogle&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/splash.css') }}">
+
+  <style>
+    /* Fade-out animation */
+    .fade-out {
+      animation: fadeOut 1s forwards;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+  </style>
+</head>
+
+<script>
+function toggleNotifications() {
+  const panel = document.getElementById("notificationPanel");
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+
+// Close when clicking outside
+document.addEventListener("click", function(event) {
+  const panel = document.getElementById("notificationPanel");
+  const bell = document.querySelector(".notification-bell");
+
+  if (!bell.contains(event.target) && !panel.contains(event.target)) {
+    panel.style.display = "none";
+  }
+});
+</script>
+
+
+<body>
+    <section class="hero" id="hero">
+  <div class="background"></div>
+
+  <h2 class="welcome-text">Mabuhay! Welcome to</h2>
+
+  <div class="white-box">
+      <div class="ellipse">
+        <img src="{{ url_for('static', filename='images/logo (welcome page).png') }}" alt="Ellipse Image">
+      </div>
+
+      <div class="brand">
+        <span class="pinya">PINYA</span>
+        <span class="suri">SURI</span>
+      </div>
+
+      <h2 class="subtitle-text">
+        An AI-Driven Autonomous Drone System with Grid Localization for Pineapple Afflictions Detection, Classification, and Monitoring
+      </h2>
+  </div>
+
+    <p class="tap-to-continue">Tap to continue.</p>
+  </section>
+
+
+<script>
+  // Wait until everything loads
+  window.addEventListener('DOMContentLoaded', () => {
+    const hero = document.getElementById('hero');
+    
+    if (hero) {
+      hero.addEventListener('click', () => {
+        // Add fade-out animation
+        document.body.classList.add('fade-out');
+        
+        // Redirect after 1 second
+        setTimeout(() => {
+          window.location.href = "{{ url_for('homepage') }}";
+        }, 1000);
+      });
+    } else {
+      console.error('Hero section not found!');
+    }
+  });
+</script>
+
+</body>
+</html>

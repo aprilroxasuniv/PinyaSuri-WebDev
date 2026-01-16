@@ -1,0 +1,619 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* MAIN PAGE SECTION */
+.data-logs-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden; 
+  overflow-y: auto;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1900px;
+  height: 110px;
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 5px 20px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 70px;
+  z-index: 10;
+}
+
+/* Menu Icon */
+.menu-icon {
+  width: 25px;
+  height: 40px;
+  background: url('../images/Menu.png') no-repeat center/contain;
+  cursor: pointer;
+}
+
+/* Center Section */
+.navbar-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.navbar-title {
+  color: #FFD51E;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 50px;
+  letter-spacing: 2px;
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #FFFFFF;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Bell Icon */
+.doorbell {
+  width: 30px;
+  height: 30px;
+  background: url('../images/doorbell.png') no-repeat center/contain;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+/* LOGS CONTAINER */
+.logs-container {
+  margin-top: 140px;
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px 0 40px;
+  overflow-y: auto; 
+  max-height: calc(100vh - 160px);
+  scrollbar-width: thin;
+  scrollbar-color: #a6a6a6 rgba(255,255,255,0.2);
+}
+
+/* Scrollbar style for Chrome/Edge/Safari */
+.logs-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.logs-container::-webkit-scrollbar-thumb {
+  background-color: #a6a6a6;
+  border-radius: 10px;
+}
+
+.logs-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Add soft fade at bottom */
+.logs-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 60px;
+  pointer-events: none;
+  border-radius: 0 0 20px 20px;
+  max-width: 1000px;
+}
+
+/* LOG CARD */
+.log-card {
+  display: flex;
+  background: #e9f3e5;
+  border-radius: 18px;
+  padding: 8px 10px;
+  margin-bottom: -10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  cursor: pointer;
+}
+
+.log-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Image */
+.log-image {
+  width: 220px;
+  height: 180px;
+  object-fit: cover;   /* 🔥 THIS IS THE FIX */
+  border-radius: 12px;
+  background: #eaeaea;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Info Area */
+.log-info {
+  display: flex;
+  flex-direction: column;  /* 🔥 important */
+  justify-content: center;
+  gap: 6px;
+  padding: 20px;
+  color: #025A2C;
+  font-size: 16px;
+  width: 100%;
+  align-items: center;
+}
+
+
+/* Date Card */
+.inner-date-card {
+  background-color: #025A2C;
+  color: #FFD51E;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px 40px;
+  border-radius: 15px;
+  min-width: 160px;
+  text-align: center;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Text beside date */
+.info-texts p {
+  margin: 4px 0;
+  font-size: 18px;
+}
+
+.info-texts {
+  width: 100%;
+}
+
+.info-texts strong {
+  color: #000;
+}
+
+/* NEW LOG HIGHLIGHT */
+.log-card.new-log {
+  background: #FFD51E; 
+  color: #025A2C;
+  transition: background-color 0.5s ease, box-shadow 0.3s ease;
+}
+
+/* When hovered, still look interactive */
+.log-card.new-log:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(255, 213, 30, 0.8);
+}
+/* ========== NOTIFICATION BELL ========== */
+
+.notification-container {
+  position: fixed;
+  top: 22px;
+  right: 110px;   /* next to doorbell */
+  z-index: 999;
+}
+
+.notification-bell {
+  font-size: 28px;
+  cursor: pointer;
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 50%;
+}
+
+/* Panel */
+.notification-panel {
+  display: none;
+  position: fixed;
+  top: 95px;      /* aligns below navbar */
+  right: 60px;    /* moves near bell */
+  width: 260px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  padding: 12px 14px;
+  font-family: 'Poppins', sans-serif;
+  z-index: 9999;
+}
+
+/* Title */
+.notification-panel h3 {
+  margin: 5px 0 10px;
+  font-size: 16px;
+  color: #25691D;
+}
+
+/* Each item */
+.notif-item {
+  padding: 8px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  border-radius: 7px;
+  background: #F1F9F1;
+  cursor: pointer;
+}
+
+.notif-item:hover {
+  background: #dff3df;
+}
+
+.nothing {
+  font-size: 13px;
+  color: gray;
+  text-align: center;
+}
+
+/* round the item pills for nicer look */
+.notif-item {
+  padding: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: #F1F9F1;
+}
+
+/* MENU OVERLAY */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 900;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+ /* SIDE MENU */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 200px;
+    height: 100vh;
+    background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+    padding: 80px 20px 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.side-menu a {
+  color: #FFD51E;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 12px 20px;
+  font-weight: 600;
+}
+
+.side-menu a:hover {
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+}
+
+/* When menu is active */
+.side-menu.active {
+  left: 0;
+}
+
+.menu-item {
+  display: block;
+  padding: 16px 24px;
+  color: #f4d35e;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.flight-card {
+  cursor: pointer;
+}
+
+.flight-card:hover {
+  background: rgba(230, 255, 230, 0.9);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background: url('../images/Group 4_PPT (1).png') center/cover no-repeat;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 420px;
+  max-height: 85vh;
+
+  border-radius: 18px;
+  padding: 16px;
+  overflow-y: auto;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.18);
+
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.25s ease;
+}
+
+
+.modal-overlay.active .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+@keyframes popIn {
+  from { transform: scale(.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+
+  border-radius: 14px;
+  margin-bottom: 14px;
+
+  display: block;
+}
+
+#modalAffliction {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  margin-top: 7px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+#modalConfidence {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: 500;
+  margin-top: -5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#modalDateTime {
+  font-size: 10px;
+  color: #FFFFFF;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.modal-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: #ffdd00;
+  text-align: center;
+}
+
+.modal-section p {
+  font-size: 14px;
+  line-height: 1;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+
+.strategy-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.strategy-btn {
+  display: block;
+  padding: 12px;
+  background: #237b29;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.strategy-btn:hover {
+  background: #154d1a;
+}
+
+.strategy-btn:active {
+  transform: scale(0.96);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  font-size: 22px;
+  color: #ffffff;
+  cursor: pointer;
+
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.close-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* ================= MOBILE RESPONSIVE FIX (FINAL) ================= */
+@media screen and (max-width: 600px) {
+
+  /* NAVBAR */
+  .navbar {
+    height: 100px;
+    width: 95%;
+    left: 0;
+    transform: none;
+    border-radius: 0 0 22px 22px;
+    padding: 0 14px;
+  }
+
+  .navbar-title {
+    font-size: 40px;
+    margin-top: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-top: -10px;
+  }
+
+  /* SMALL IMAGE (LEFT) */
+  .log-image {
+    width: 95px;
+    height: 95px;
+    border-radius: 12px;
+    margin-right: 10px;
+    margin-left: 15;
+  }
+  
+  .log-image img {
+  width: 130px;
+  height: 100px;
+  border-radius: 14px;
+  object-fit: cover;
+  margin-top: 4px;
+  margin-right: 10px;
+  margin-left: 4px;
+}
+
+/* NEW TAG */
+.log-card.new-log {
+  position: relative;
+}
+
+/* Red NEW badge */
+.log-card.new-log::before {
+  content: "NEW";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #d32f2f;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.log-info p {
+  margin: 4px 0;
+}
+
+.log-time {
+  font-size: 12px;
+  color: #888;
+}
+
+.log-thumb {
+  width: 92px;
+  height: 92px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.log-content {
+  margin-left: 12px;
+  flex: 1;
+}
+
+.log-date-badge {
+  background: #1f6b3a;
+  color: #fff;
+  display: inline-block;
+  padding: 5px 30px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-bottom: 6px;
+  margin-left: 50px;
+  margin-top: 5px;
+}
+
+.log-affliction {
+  font-size: 12px;
+  margin-bottom: 4px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.log-meta {
+  font-size: 12px;
+  color: #333;
+  margin-left: 50px;
+}
+}
